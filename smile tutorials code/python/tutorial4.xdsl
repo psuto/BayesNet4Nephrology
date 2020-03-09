@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- This file was created by ACADEMIC version of SMILE -->
+<smile version="1.0" id="Unnamed" numsamples="10000" discsamples="10000">
+	<nodes>
+		<cpt id="Economy">
+			<state id="Up" />
+			<state id="Flat" />
+			<state id="Down" />
+			<probabilities>0.2 0.7 0.1</probabilities>
+		</cpt>
+		<cpt id="Success">
+			<state id="Success" />
+			<state id="Failure" />
+			<parents>Economy</parents>
+			<probabilities>0.3 0.7 0.2 0.8 0.1 0.9</probabilities>
+		</cpt>
+		<cpt id="Forecast">
+			<state id="Good" />
+			<state id="Moderate" />
+			<state id="Poor" />
+			<parents>Success Economy</parents>
+			<probabilities>0.7 0.29 0.01 0.65 0.3 0.05 0.6 0.3 0.1 0.15 0.3 0.55 0.1 0.3 0.6 0.05 0.25 0.7</probabilities>
+		</cpt>
+		<decision id="Invest">
+			<state id="Invest" />
+			<state id="DoNotInvest" />
+		</decision>
+		<utility id="Gain">
+			<parents>Invest Success</parents>
+			<utilities>10000 -5000 500 500</utilities>
+		</utility>
+	</nodes>
+	<extensions>
+		<genie version="1.0" app="SMILE_ACADEMIC 1.5.0@a121f1f76773" name="Unnamed" faultnameformat="nodestate">
+			<node id="Economy">
+				<name>State of the economy</name>
+				<interior color="e5f6f7" />
+				<outline color="0000bb" />
+				<font color="000000" name="MS Sans Serif" size="8" />
+				<position>160 40 245 95</position>
+			</node>
+			<node id="Success">
+				<name>Success of the venture</name>
+				<interior color="e5f6f7" />
+				<outline color="0000bb" />
+				<font color="000000" name="MS Sans Serif" size="8" />
+				<position>60 40 145 95</position>
+			</node>
+			<node id="Forecast">
+				<name>Expert forecast</name>
+				<interior color="e5f6f7" />
+				<outline color="0000bb" />
+				<font color="000000" name="MS Sans Serif" size="8" />
+				<position>110 140 195 195</position>
+			</node>
+			<node id="Invest">
+				<name>Investment decision</name>
+				<interior color="e5f6f7" />
+				<outline color="0000bb" />
+				<font color="000000" name="MS Sans Serif" size="8" />
+				<position>160 240 245 295</position>
+			</node>
+			<node id="Gain">
+				<name>Financial gain</name>
+				<interior color="e5f6f7" />
+				<outline color="0000bb" />
+				<font color="000000" name="MS Sans Serif" size="8" />
+				<position>60 200 145 255</position>
+			</node>
+		</genie>
+	</extensions>
+</smile>

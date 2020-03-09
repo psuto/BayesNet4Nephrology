@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="0efbe20e-0628-4d43-985c-04219f5f5ade" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Jupyter Notebook" />
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="C:\Work\dev\dECMT_src\SMILE_test\.idea" />
+      </set>
+    </option>
+  </component>
+  <component name="JupyterTrust" id="17825e94-71ac-4d3a-8001-991543762894">
+    <option name="files">
+      <option value="src\param4BN_learn_from_data_tranfs.ipynb" />
+      <option value="src\parametrizationBN.ipynb" />
+    </option>
+  </component>
+  <component name="ProjectId" id="1XnUmV6IFentXRzjysOwShtxmic" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RunManager" selected="Python.baselineForScr">
+    <configuration name="app (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="BN4Nephrology" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/smile tutorials code/python" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/smile tutorials code/python/app.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="app" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="BN4Nephrology" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/app.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="baselineForScr" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="BN4Nephrology" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/baselineForScr.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="hello (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="BN4Nephrology" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/smile tutorials code/python" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/smile tutorials code/python/hello.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="tutorial1" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="BN4Nephrology" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/tutorial1.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.baselineForScr" />
+        <item itemvalue="Python.app (1)" />
+        <item itemvalue="Python.hello (1)" />
+        <item itemvalue="Python.app" />
+        <item itemvalue="Python.tutorial1" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0efbe20e-0628-4d43-985c-04219f5f5ade" name="Default Changelist" comment="" />
+      <created>1581681511192</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1581681511192</updated>
+      <workItem from="1581681518631" duration="351000" />
+      <workItem from="1581682203172" duration="1081000" />
+      <workItem from="1581683295617" duration="12838000" />
+      <workItem from="1582821895986" duration="104000" />
+      <workItem from="1582822777333" duration="1389000" />
+      <workItem from="1583158124809" duration="788000" />
+      <workItem from="1583160426018" duration="649000" />
+      <workItem from="1583414492781" duration="17226000" />
+      <workItem from="1583518794310" duration="13834000" />
+      <workItem from="1583767080089" duration="2579000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="689" y="259" key="#Inspections" timestamp="1583424392921">
+      <screen x="0" y="0" width="2194" height="1194" />
+    </state>
+    <state x="689" y="259" key="#Inspections/2862.2160.1536.824/3840.1091.1680.1010/0.0.2194.1194@0.0.2194.1194" timestamp="1583424392921" />
+    <state x="551" y="255" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1583424589350">
+      <screen x="0" y="0" width="2194" height="1194" />
+    </state>
+    <state x="551" y="255" key="#com.intellij.execution.impl.EditConfigurationsDialog/2862.2160.1536.824/3840.1091.1680.1010/0.0.2194.1194@0.0.2194.1194" timestamp="1583424589350" />
+    <state x="849" y="407" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1583415298799">
+      <screen x="0" y="0" width="2194" height="1194" />
+    </state>
+    <state x="849" y="407" key="#com.intellij.fileTypes.FileTypeChooser/2862.2160.1536.824/3840.1091.1680.1010/0.0.2194.1194@0.0.2194.1194" timestamp="1583415298799" />
+    <state x="369" y="350" key="#xdebugger.XInspectDialog" timestamp="1583423956732">
+      <screen x="0" y="0" width="2194" height="1194" />
+    </state>
+    <state x="369" y="350" key="#xdebugger.XInspectDialog/2862.2160.1536.824/3840.1091.1680.1010/0.0.2194.1194@0.0.2194.1194" timestamp="1583423956732" />
+    <state x="846" y="320" key="FileChooserDialogImpl" timestamp="1583427505900">
+      <screen x="0" y="0" width="2194" height="1194" />
+    </state>
+    <state x="-1180" y="279" key="FileChooserDialogImpl/-1480.1080.1333.849/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1582663726370" />
+    <state x="846" y="320" key="FileChooserDialogImpl/2862.2160.1536.824/3840.1091.1680.1010/0.0.2194.1194@0.0.2194.1194" timestamp="1583427505900" />
+    <state width="1075" height="499" key="GridCell.Tab.0.bottom" timestamp="1583783096604">
+      <screen x="0" y="0" width="2194" height="1194" />
+    </state>
+    <state width="1075" height="499" key="GridCell.Tab.0.bottom/2862.2160.1536.824/3840.1091.1680.1010/0.0.2194.1194@0.0.2194.1194" timestamp="1583783096604" />
+    <state width="1075" height="499" key="GridCell.Tab.0.center" timestamp="1583783096604">
+      <screen x="0" y="0" width="2194" height="1194" />
+    </state>
+    <state width="1075" height="499" key="GridCell.Tab.0.center/2862.2160.1536.824/3840.1091.1680.1010/0.0.2194.1194@0.0.2194.1194" timestamp="1583783096604" />
+    <state width="1075" height="499" key="GridCell.Tab.0.left" timestamp="1583783096604">
+      <screen x="0" y="0" width="2194" height="1194" />
+    </state>
+    <state width="1075" height="499" key="GridCell.Tab.0.left/2862.2160.1536.824/3840.1091.1680.1010/0.0.2194.1194@0.0.2194.1194" timestamp="1583783096604" />
+    <state width="1075" height="499" key="GridCell.Tab.0.right" timestamp="1583783096604">
+      <screen x="0" y="0" width="2194" height="1194" />
+    </state>
+    <state width="1075" height="499" key="GridCell.Tab.0.right/2862.2160.1536.824/3840.1091.1680.1010/0.0.2194.1194@0.0.2194.1194" timestamp="1583783096604" />
+    <state width="1644" height="190" key="GridCell.Tab.1.bottom" timestamp="1583766859867">
+      <screen x="0" y="0" width="2194" height="1194" />
+    </state>
+    <state width="1644" height="190" key="GridCell.Tab.1.bottom/2862.2160.1536.824/3840.1091.1680.1010/0.0.2194.1194@0.0.2194.1194" timestamp="1583766859866" />
+    <state width="1644" height="190" key="GridCell.Tab.1.center" timestamp="1583766859866">
+      <screen x="0" y="0" width="2194" height="1194" />
+    </state>
+    <state width="1644" height="190" key="GridCell.Tab.1.center/2862.2160.1536.824/3840.1091.1680.1010/0.0.2194.1194@0.0.2194.1194" timestamp="1583766859866" />
+    <state width="1644" height="190" key="GridCell.Tab.1.left" timestamp="1583766859866">
+      <screen x="0" y="0" width="2194" height="1194" />
+    </state>
+    <state width="1644" height="190" key="GridCell.Tab.1.left/2862.2160.1536.824/3840.1091.1680.1010/0.0.2194.1194@0.0.2194.1194" timestamp="1583766859866" />
+    <state width="1644" height="190" key="GridCell.Tab.1.right" timestamp="1583766859866">
+      <screen x="0" y="0" width="2194" height="1194" />
+    </state>
+    <state width="1644" height="190" key="GridCell.Tab.1.right/2862.2160.1536.824/3840.1091.1680.1010/0.0.2194.1194@0.0.2194.1194" timestamp="1583766859866" />
+    <state x="600" y="243" key="SettingsEditor" timestamp="1583523901003">
+      <screen x="0" y="0" width="2194" height="1194" />
+    </state>
+    <state x="600" y="243" key="SettingsEditor/2862.2160.1536.824/3840.1091.1680.1010/0.0.2194.1194@0.0.2194.1194" timestamp="1583523901003" />
+    <state x="804" y="426" key="com.intellij.ide.util.TipDialog" timestamp="1583781313782">
+      <screen x="0" y="0" width="2194" height="1194" />
+    </state>
+    <state x="804" y="426" key="com.intellij.ide.util.TipDialog/2862.2160.1536.824/3840.1091.1680.1010/0.0.2194.1194@0.0.2194.1194" timestamp="1583781313782" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="jupyter-line">
+          <url>file://$PROJECT_DIR$/src/param4BN_learn_from_data_tranfs.ipynb</url>
+          <line>38</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="jupyter-line">
+          <url>file://$PROJECT_DIR$/src/param4BN_learn_from_data_tranfs.ipynb</url>
+          <line>35</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/SMILE_test$baselineForScr.coverage" NAME="baselineForScr Coverage Results" MODIFIED="1583783096596" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/SMILE_test$app.coverage" NAME="app Coverage Results" MODIFIED="1581685738226" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/SMILE_test$app__1_.coverage" NAME="app (1) Coverage Results" MODIFIED="1583424019960" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/smile tutorials code/python" />
+    <SUITE FILE_PATH="coverage/SMILE_test$hello__1_.coverage" NAME="hello (1) Coverage Results" MODIFIED="1581695355898" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/smile tutorials code/python" />
+    <SUITE FILE_PATH="coverage/SMILE_test$tutorial1.coverage" NAME="tutorial1 Coverage Results" MODIFIED="1581685692325" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/SMILE_test$hello.coverage" NAME="hello Coverage Results" MODIFIED="1581684500497" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/BN4Nephrology$baselineForScr.coverage" NAME="baselineForScr Coverage Results" MODIFIED="1583785874937" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+  </component>
+</project>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- This file was created by ACADEMIC version of SMILE -->
+<smile version="1.0" id="Unnamed" numsamples="10000" discsamples="10000" rejectoutliers="true">
+	<nodes>
+		<equation id="tra">
+			<definition lower="23.9" upper="24.1">tra=24</definition>
+		</equation>
+		<equation id="u_d">
+			<definition lower="0" upper="1">u_d=Bernoulli(0.539)*0.8+0.2</definition>
+			<discretization>
+				<interval label="State0" upper="0.5" />
+				<interval label="State1" upper="1" />
+			</discretization>
+		</equation>
+		<equation id="toa">
+			<definition lower="-10" upper="40">toa=Normal(11,15)</definition>
+			<discretization>
+				<interval upper="0" />
+				<interval upper="10" />
+				<interval upper="20" />
+				<interval upper="30" />
+				<interval upper="40" />
+			</discretization>
+		</equation>
+		<equation id="tma">
+			<parents>toa u_d tra</parents>
+			<definition lower="10" upper="30">tma=toa*u_d+(tra-tra*u_d)</definition>
+			<discretization>
+				<interval upper="15" />
+				<interval upper="20" />
+				<interval upper="25" />
+				<interval upper="30" />
+			</discretization>
+		</equation>
+	</nodes>
+	<extensions>
+		<genie version="1.0" app="SMILE_ACADEMIC 1.5.0@a121f1f76773" name="Unnamed" faultnameformat="nodestate">
+			<node id="tra">
+				<name>Return Air Temperature</name>
+				<interior color="e5f6f7" />
+				<outline color="0000bb" />
+				<font color="000000" name="MS Sans Serif" size="8" />
+				<position>280 100 365 155</position>
+			</node>
+			<node id="u_d">
+				<name>Damper Control Signal</name>
+				<interior color="e5f6f7" />
+				<outline color="0000bb" />
+				<font color="000000" name="MS Sans Serif" size="8" />
+				<position>160 100 245 155</position>
+			</node>
+			<node id="toa">
+				<name>Outside Air Temperature</name>
+				<interior color="e5f6f7" />
+				<outline color="0000bb" />
+				<font color="000000" name="MS Sans Serif" size="8" />
+				<position>60 100 145 155</position>
+			</node>
+			<node id="tma">
+				<name>Mixed Air Temperature</name>
+				<interior color="e5f6f7" />
+				<outline color="0000bb" />
+				<font color="000000" name="MS Sans Serif" size="8" />
+				<position>110 200 195 255</position>
+			</node>
+		</genie>
+	</extensions>
+</smile>

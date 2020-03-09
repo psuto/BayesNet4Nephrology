@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- This file was created by ACADEMIC version of SMILE -->
+<smile version="1.0" id="Unnamed" numsamples="10000" discsamples="10000">
+	<nodes>
+		<cpt id="Location">
+			<state id="Pittsburgh" />
+			<state id="Sahara" />
+			<probabilities>0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="Rain" dynamic="plate">
+			<state id="true" />
+			<state id="false" />
+			<parents>Location</parents>
+			<probabilities>0.7 0.3 0.01 0.99</probabilities>
+		</cpt>
+		<cpt id="Umbrella" dynamic="plate">
+			<state id="true" />
+			<state id="false" />
+			<parents>Rain</parents>
+			<probabilities>0.9 0.1 0.2 0.8</probabilities>
+		</cpt>
+	</nodes>
+	<dynamic numslices="5">
+		<cpt id="Rain" order="1">
+			<parents>Rain</parents>
+			<probabilities>0.7 0.3 0.3 0.7 0.001 0.999 0.01 0.99</probabilities>
+		</cpt>
+	</dynamic>
+	<extensions>
+		<genie version="1.0" app="SMILE_ACADEMIC 1.5.0@a121f1f76773" name="Unnamed" faultnameformat="nodestate">
+			<plate leftwidth="120" rightwidth="120">20 20 620 320</plate>
+			<node id="Location">
+				<name>Location</name>
+				<interior color="e5f6f7" />
+				<outline color="0000bb" />
+				<font color="000000" name="MS Sans Serif" size="8" />
+				<position>160 360 245 415</position>
+			</node>
+			<node id="Rain">
+				<name>Rain</name>
+				<interior color="e5f6f7" />
+				<outline color="0000bb" />
+				<font color="000000" name="MS Sans Serif" size="8" />
+				<position>380 240 465 295</position>
+			</node>
+			<node id="Umbrella">
+				<name>Umbrella</name>
+				<interior color="e5f6f7" />
+				<outline color="0000bb" />
+				<font color="000000" name="MS Sans Serif" size="8" />
+				<position>300 100 385 155</position>
+			</node>
+		</genie>
+	</extensions>
+</smile>
