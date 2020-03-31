@@ -1,4 +1,5 @@
 import pysmile
+import pysmile_license
 
 # Tutorial8 loads continuous model from the XDSL file written by Tutorial7,
 # then adds discrete nodes to create a hybrid model. Inference is performed
@@ -108,3 +109,7 @@ class Tutorial8:
             net.add_outcome(handle, outcomes[i])
             
         return handle
+
+
+if __name__ == '__main__':\
+    Tutorial8()
