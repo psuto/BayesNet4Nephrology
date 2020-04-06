@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0efbe20e-0628-4d43-985c-04219f5f5ade" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/buildBNStructure.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/smile tutorials code/python/tutorial1.py" beforeDir="false" afterPath="$PROJECT_DIR$/smile tutorials code/python/tutorial1.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/smile tutorials code/python/tutorial2.py" beforeDir="false" afterPath="$PROJECT_DIR$/smile tutorials code/python/tutorial2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/smile tutorials code/python/tutorial3.py" beforeDir="false" afterPath="$PROJECT_DIR$/smile tutorials code/python/tutorial3.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/smile tutorials code/python/tutorial6.py" beforeDir="false" afterPath="$PROJECT_DIR$/smile tutorials code/python/tutorial6.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/param4BN_learn_from_data_tranfs.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/src/param4BN_learn_from_data_tranfs.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/param4BN_learn_from_data_tranfs.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/param4BN_learn_from_data_tranfs.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -223,7 +217,7 @@
       <workItem from="1584469815336" duration="27447000" />
       <workItem from="1584647728844" duration="7801000" />
       <workItem from="1585002283540" duration="59196000" />
-      <workItem from="1585524070930" duration="91033000" />
+      <workItem from="1585524070930" duration="91675000" />
     </task>
     <servers />
   </component>
