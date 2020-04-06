@@ -58,3 +58,10 @@ class Tutorial2:
         net.update_beliefs()
         self.print_all_posteriors(net)
         print("")
+
+
+def main():
+    Tutorial2()
+
+if __name__ == '__main__':
+    main()

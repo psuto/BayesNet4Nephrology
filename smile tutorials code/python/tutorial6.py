@@ -1,4 +1,5 @@
 import pysmile
+import pysmile_license
 
 # Tutorial6 creates a dynamic Bayesian network (DBN),
 # performs the inference, then saves the model to disk.
@@ -99,3 +100,12 @@ class Tutorial6:
             net.add_outcome(handle, outcomes[i])
             
         return handle
+
+
+def main():
+    Tutorial6()
+
+
+if __name__ == '__main__':
+    main()
+            

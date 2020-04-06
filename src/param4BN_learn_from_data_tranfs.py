@@ -7,8 +7,13 @@ from pandas import Series
 from pandas.core.arrays import ExtensionArray
 import sys
 
+import buildBNStructure
+
 
 Interval = collections.namedtuple('Interval', 'lb ub')
+
+
+
 
 baselineKDIGOmol = {'black_male':
                         {Interval(20, 24): 133,
@@ -268,14 +273,31 @@ def addAKICol(df1,baselineKDIGOmol):
     print()
     return dfRes
 
+def addAKIinNext48H4Row(row, df):
+    """
 
-def addAKIin48H(df1):
-    df1['AKI_present'] = pd.Series()
-    df1['AKI_stage_1'] = pd.Series()
-    df1['AKI_stage_2'] = pd.Series()
-    df1['AKI_stage_3'] = pd.Series()
+    :param row:
+    :param df:
+    :return:
+    """
+    c = df.columns.to_list()
+    # =============================
+    labDate = row["labevent_charttime"]
+    upperB_date = labDate+pd.DateOffset(hours=48)
+    selected48HoursIdx = df['labevent_charttime'].between(labDate, upperB_date)
+    dfNext48H = df[selected48HoursIdx]
+    numSelRows = len(dfNext48H)
+    isAKIinNext48H = dfNext48H['AKI_present'].any()
+    print()
+    return isAKIinNext48H
+
+def addAKIinNext48H(df1):
+    """
+    :param df1:
+    :return:
+    """
     dfRes = pd.DataFrame()
-    df1['AKI_present'] = pd.Series(dtype=float)
+    df1['AKIinNext48H'] = pd.Series() # pd.Series(dtype=float)
     c = df1.columns.to_list()
     # subjIDUnique = df1[]
     unqueSubjID = df1.subject_id.unique()
@@ -283,17 +305,64 @@ def addAKIin48H(df1):
     for subj in unqueSubjID:
         map1 = df1['subject_id'] == subj
         df2 = df1[map1]
-        df2['AKI_present'] = df2.apply(lambda r: akiPresent(r, df2), axis=1)
+        df2['AKIinNext48H'] = df2.apply(lambda r: addAKIinNext48H4Row(r, df2), axis=1)
         dfRes = dfRes.append(df2)
         print()
     print()
     return dfRes
 
 
+def addDynamicScr(row, df, numPeriods, periodLenghtHours, scrCols):
+    c = df.columns.to_list()
+    res = []
+    # =============================
+    labDate = row["labevent_charttime"]
+    ub_date = labDate
+
+    for i in range(0,numPeriods):
+        lowerB_date = ub_date - pd.DateOffset(hours=48)+pd.DateOffset(seconds=1)
+        selected48HoursIdx = df['labevent_charttime'].between(lowerB_date, ub_date)
+        dfPrev48H = df[selected48HoursIdx]
+        numSelRows = len(dfPrev48H)
+        scrMean = dfPrev48H['creatinine_val_num_mols'].mean()
+        res.append(scrMean)
+        # ==========================================
+        print()
+        ub_date= lowerB_date-pd.DateOffset(seconds=1)
+    return pd.Series(res)
+
+def getDF4DBN(df1):
+    """
+    :param df1:
+    :return:
+    """
+    numPeriods = 4
+    periodLenghtHours = 48
+    scrCols = ["Scr_level"]
+    scrCols.extend(["Scr_level_"+str(x) for x in range(1,numPeriods)])
+    dfRes = pd.DataFrame(columns=scrCols)
+    print('=======================================')
+    # df1['AKIinNext48H'] = pd.Series() # pd.Series(dtype=float)
+    c = df1.columns.to_list()
+    # # subjIDUnique = df1[]
+    unqueSubjID = df1.subject_id.unique()
+    print('=======================================')
+    # numPeriods, periodLenghtHours
+    print('=======================================')
+    print()
+    for subj in unqueSubjID:
+        map1 = df1['subject_id'] == subj
+        df2 = df1[map1]
+        df2[scrCols] = df2.apply(lambda r: addDynamicScr(r, df2,numPeriods,periodLenghtHours, scrCols), axis=1)
+        dfRes = dfRes.append(df2)
+        print()
+    # print()
+    return dfRes
+
 
 def main():
     # df1 = pd.read_csv('../../data/AKI_data_200304_full.csv', nrows=20)
-    df1 = pd.read_csv('../../data/AKI_data_200325_full_dob_v02.csv', nrows=1000)
+    df1 = pd.read_csv('../../data/AKI_data_200325_full_dob_v02.csv', nrows=500)
     df1.drop('hadm_id', axis=1, inplace=True)
 
     df1['creatinine_val_num_mols'] = df1.apply(convertCreatinineVals, axis=1)
@@ -318,7 +387,10 @@ def main():
     print(df1.head())
     print('AKI_present')
     print(df1['AKI_present'].head())
-    addAKIin48H(df1)
+    df1 = addAKIinNext48H(df1)
+    print(df1.head())
+    dfOut = getDF4DBN(df1)
+    print('----------------------------------------------')
     print('----------------------------------------------')
     print('----------------------------------------------')
 

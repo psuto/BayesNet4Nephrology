@@ -1,4 +1,5 @@
 import pysmile
+import pysmile_license
 
 # Tutorial1 creates a simple network with three nodes,
 # then writes its content as XDSL file to disk.
@@ -92,3 +93,11 @@ class Tutorial1:
             net.add_outcome(handle, outcomes[i])
             
         return handle
+
+
+def main():
+    Tutorial1()
+
+
+if __name__ == '__main__':
+    main()

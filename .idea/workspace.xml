@@ -2,20 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0efbe20e-0628-4d43-985c-04219f5f5ade" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/other.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.ipynb_checkpoints/Untitled-checkpoint.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Untitled.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/.ipynb_checkpoints/parametrizationBN-checkpoint.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/param4BN_learn_from_data_tranfs.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/BN4Nephrology.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/BN4Nephrology.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/buildBNStructure.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/smile tutorials code/python/pysmile_license.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/smile tutorials code/python/tutorial1.py" beforeDir="false" afterPath="$PROJECT_DIR$/smile tutorials code/python/tutorial1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/smile tutorials code/python/tutorial2.py" beforeDir="false" afterPath="$PROJECT_DIR$/smile tutorials code/python/tutorial2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/smile tutorials code/python/tutorial3.py" beforeDir="false" afterPath="$PROJECT_DIR$/smile tutorials code/python/tutorial3.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/smile tutorials code/python/tutorial6.py" beforeDir="false" afterPath="$PROJECT_DIR$/smile tutorials code/python/tutorial6.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/smile tutorials code/python/tutorial8.py" beforeDir="false" afterPath="$PROJECT_DIR$/smile tutorials code/python/tutorial8.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/baselineForScr.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/baselineForScr.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/param4BN_learn_from_data_tranfs.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/src/param4BN_learn_from_data_tranfs.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parametrizationBN.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/src/parametrizationBN.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/param4BN_learn_from_data_tranfs.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/param4BN_learn_from_data_tranfs.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,9 +52,9 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.notebooks.jupyter.connections.configuration.JupyterServerConfigurable" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.documentation.PythonDocumentationConfigurable" />
   </component>
-  <component name="RunManager" selected="Python.param4BN_learn_from_data_tranfs">
+  <component name="RunManager" selected="Python.tutorial1">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <module name="BN4Nephrology" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -83,57 +77,29 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="app (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="buildBNStructure" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="BN4Nephrology" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/smile tutorials code/python" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/smile tutorials code/python/app.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="baselineForScr" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="BN4Nephrology" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/baselineForScr.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/buildBNStructure.py" />
       <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
       <option name="REDIRECT_INPUT" value="false" />
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="hello (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="hello" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="BN4Nephrology" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/smile tutorials code/python" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -142,51 +108,64 @@
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/smile tutorials code/python/hello.py" />
       <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
       <option name="REDIRECT_INPUT" value="false" />
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="param4BN_learn_from_data_tranfs" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="tutorial1" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="BN4Nephrology" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/param4BN_learn_from_data_tranfs.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="tutorial8" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="BN4Nephrology" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/smile tutorials code/python" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/smile tutorials code/python/tutorial8.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/smile tutorials code/python/tutorial1.py" />
       <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="tutorial3" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="BN4Nephrology" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/smile tutorials code/python" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/smile tutorials code/python/tutorial3.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="tutorial6" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="BN4Nephrology" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/smile tutorials code/python" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/smile tutorials code/python/tutorial6.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
       <option name="REDIRECT_INPUT" value="false" />
@@ -195,11 +174,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.param4BN_learn_from_data_tranfs" />
-        <item itemvalue="Python.tutorial8" />
-        <item itemvalue="Python.baselineForScr" />
-        <item itemvalue="Python.app (1)" />
-        <item itemvalue="Python.hello (1)" />
+        <item itemvalue="Python.buildBNStructure" />
+        <item itemvalue="Python.tutorial1" />
+        <item itemvalue="Python.tutorial6" />
+        <item itemvalue="Python.tutorial3" />
+        <item itemvalue="Python.hello" />
       </list>
     </recent_temporary>
   </component>
@@ -244,7 +223,7 @@
       <workItem from="1584469815336" duration="27447000" />
       <workItem from="1584647728844" duration="7801000" />
       <workItem from="1585002283540" duration="59196000" />
-      <workItem from="1585524070930" duration="36973000" />
+      <workItem from="1585524070930" duration="91033000" />
     </task>
     <servers />
   </component>
@@ -288,88 +267,88 @@
     <state x="-1180" y="279" key="FileChooserDialogImpl/-1480.1080.1333.849/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1582663726370" />
     <state x="592" y="221" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1583850678391" />
     <state x="846" y="320" key="FileChooserDialogImpl/2862.2160.1536.824/3840.1091.1680.1010/0.0.2194.1194@0.0.2194.1194" timestamp="1583427505900" />
-    <state width="937" height="423" key="GridCell.Tab.0.bottom" timestamp="1585618359218">
+    <state width="1877" height="315" key="GridCell.Tab.0.bottom" timestamp="1586052786040">
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="937" height="423" key="GridCell.Tab.0.bottom/-1480.1080.1333.849/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1585618359218" />
+    <state width="1244" height="315" key="GridCell.Tab.0.bottom/-1480.1080.1333.849/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1585931834492" />
     <state width="1877" height="260" key="GridCell.Tab.0.bottom/-1480.1080.1333.849/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1585222965250" />
-    <state width="1877" height="260" key="GridCell.Tab.0.bottom/-1480.1080.1333.849/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1585227704584" />
-    <state width="1877" height="260" key="GridCell.Tab.0.bottom/-1480.1080.1333.849/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585303356814" />
+    <state width="1877" height="315" key="GridCell.Tab.0.bottom/-1480.1080.1333.849/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1586052786040" />
+    <state width="1022" height="315" key="GridCell.Tab.0.bottom/-1480.1080.1333.849/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585835655990" />
     <state width="1493" height="320" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1583851254896" />
     <state width="1642" height="190" key="GridCell.Tab.0.bottom/2862.2160.1536.824/3840.1091.1680.1010/0.0.2194.1194@0.0.2194.1194" timestamp="1584128471869" />
-    <state width="937" height="423" key="GridCell.Tab.0.center" timestamp="1585618359218">
+    <state width="1877" height="315" key="GridCell.Tab.0.center" timestamp="1586052786040">
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="937" height="423" key="GridCell.Tab.0.center/-1480.1080.1333.849/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1585618359218" />
+    <state width="1244" height="315" key="GridCell.Tab.0.center/-1480.1080.1333.849/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1585931834491" />
     <state width="1877" height="260" key="GridCell.Tab.0.center/-1480.1080.1333.849/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1585222965250" />
-    <state width="1877" height="260" key="GridCell.Tab.0.center/-1480.1080.1333.849/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1585227704584" />
-    <state width="1877" height="260" key="GridCell.Tab.0.center/-1480.1080.1333.849/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585303356813" />
+    <state width="1877" height="315" key="GridCell.Tab.0.center/-1480.1080.1333.849/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1586052786040" />
+    <state width="1022" height="315" key="GridCell.Tab.0.center/-1480.1080.1333.849/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585835655990" />
     <state width="1493" height="320" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1583851254896" />
     <state width="1642" height="190" key="GridCell.Tab.0.center/2862.2160.1536.824/3840.1091.1680.1010/0.0.2194.1194@0.0.2194.1194" timestamp="1584128471869" />
-    <state width="937" height="423" key="GridCell.Tab.0.left" timestamp="1585618359218">
+    <state width="1877" height="315" key="GridCell.Tab.0.left" timestamp="1586052786040">
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="937" height="423" key="GridCell.Tab.0.left/-1480.1080.1333.849/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1585618359218" />
+    <state width="1244" height="315" key="GridCell.Tab.0.left/-1480.1080.1333.849/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1585931834491" />
     <state width="1877" height="260" key="GridCell.Tab.0.left/-1480.1080.1333.849/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1585222965250" />
-    <state width="1877" height="260" key="GridCell.Tab.0.left/-1480.1080.1333.849/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1585227704584" />
-    <state width="1877" height="260" key="GridCell.Tab.0.left/-1480.1080.1333.849/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585303356813" />
+    <state width="1877" height="315" key="GridCell.Tab.0.left/-1480.1080.1333.849/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1586052786040" />
+    <state width="1022" height="315" key="GridCell.Tab.0.left/-1480.1080.1333.849/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585835655990" />
     <state width="1493" height="320" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1583851254896" />
     <state width="1642" height="190" key="GridCell.Tab.0.left/2862.2160.1536.824/3840.1091.1680.1010/0.0.2194.1194@0.0.2194.1194" timestamp="1584128471869" />
-    <state width="937" height="423" key="GridCell.Tab.0.right" timestamp="1585618359218">
+    <state width="1877" height="315" key="GridCell.Tab.0.right" timestamp="1586052786040">
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="937" height="423" key="GridCell.Tab.0.right/-1480.1080.1333.849/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1585618359218" />
+    <state width="1244" height="315" key="GridCell.Tab.0.right/-1480.1080.1333.849/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1585931834492" />
     <state width="1877" height="260" key="GridCell.Tab.0.right/-1480.1080.1333.849/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1585222965250" />
-    <state width="1877" height="260" key="GridCell.Tab.0.right/-1480.1080.1333.849/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1585227704584" />
-    <state width="1877" height="260" key="GridCell.Tab.0.right/-1480.1080.1333.849/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585303356814" />
+    <state width="1877" height="315" key="GridCell.Tab.0.right/-1480.1080.1333.849/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1586052786040" />
+    <state width="1022" height="315" key="GridCell.Tab.0.right/-1480.1080.1333.849/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585835655990" />
     <state width="1493" height="320" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1583851254896" />
     <state width="1642" height="190" key="GridCell.Tab.0.right/2862.2160.1536.824/3840.1091.1680.1010/0.0.2194.1194@0.0.2194.1194" timestamp="1584128471869" />
-    <state width="1023" height="415" key="GridCell.Tab.1.bottom" timestamp="1585618146219">
+    <state width="1877" height="315" key="GridCell.Tab.1.bottom" timestamp="1586052787681">
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1023" height="415" key="GridCell.Tab.1.bottom/-1480.1080.1333.849/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1585618146219" />
+    <state width="1244" height="315" key="GridCell.Tab.1.bottom/-1480.1080.1333.849/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1585931835791" />
     <state width="1877" height="260" key="GridCell.Tab.1.bottom/-1480.1080.1333.849/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1585222965479" />
-    <state width="1877" height="260" key="GridCell.Tab.1.bottom/-1480.1080.1333.849/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1585227704697" />
-    <state width="1877" height="260" key="GridCell.Tab.1.bottom/-1480.1080.1333.849/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585303356814" />
+    <state width="1877" height="315" key="GridCell.Tab.1.bottom/-1480.1080.1333.849/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1586052787681" />
+    <state width="1022" height="315" key="GridCell.Tab.1.bottom/-1480.1080.1333.849/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585835665339" />
     <state width="1642" height="190" key="GridCell.Tab.1.bottom/2862.2160.1536.824/3840.1091.1680.1010/0.0.2194.1194@0.0.2194.1194" timestamp="1584128472037" />
-    <state width="1023" height="415" key="GridCell.Tab.1.center" timestamp="1585618146219">
+    <state width="1877" height="315" key="GridCell.Tab.1.center" timestamp="1586052787681">
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1023" height="415" key="GridCell.Tab.1.center/-1480.1080.1333.849/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1585618146219" />
+    <state width="1244" height="315" key="GridCell.Tab.1.center/-1480.1080.1333.849/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1585931835791" />
     <state width="1877" height="260" key="GridCell.Tab.1.center/-1480.1080.1333.849/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1585222965479" />
-    <state width="1877" height="260" key="GridCell.Tab.1.center/-1480.1080.1333.849/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1585227704697" />
-    <state width="1877" height="260" key="GridCell.Tab.1.center/-1480.1080.1333.849/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585303356814" />
+    <state width="1877" height="315" key="GridCell.Tab.1.center/-1480.1080.1333.849/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1586052787681" />
+    <state width="1022" height="315" key="GridCell.Tab.1.center/-1480.1080.1333.849/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585835665339" />
     <state width="1642" height="190" key="GridCell.Tab.1.center/2862.2160.1536.824/3840.1091.1680.1010/0.0.2194.1194@0.0.2194.1194" timestamp="1584128472037" />
-    <state width="1023" height="415" key="GridCell.Tab.1.left" timestamp="1585618146219">
+    <state width="1877" height="315" key="GridCell.Tab.1.left" timestamp="1586052787681">
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1023" height="415" key="GridCell.Tab.1.left/-1480.1080.1333.849/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1585618146219" />
+    <state width="1244" height="315" key="GridCell.Tab.1.left/-1480.1080.1333.849/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1585931835791" />
     <state width="1877" height="260" key="GridCell.Tab.1.left/-1480.1080.1333.849/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1585222965479" />
-    <state width="1877" height="260" key="GridCell.Tab.1.left/-1480.1080.1333.849/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1585227704697" />
-    <state width="1877" height="260" key="GridCell.Tab.1.left/-1480.1080.1333.849/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585303356814" />
+    <state width="1877" height="315" key="GridCell.Tab.1.left/-1480.1080.1333.849/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1586052787681" />
+    <state width="1022" height="315" key="GridCell.Tab.1.left/-1480.1080.1333.849/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585835665339" />
     <state width="1642" height="190" key="GridCell.Tab.1.left/2862.2160.1536.824/3840.1091.1680.1010/0.0.2194.1194@0.0.2194.1194" timestamp="1584128472037" />
-    <state width="1023" height="415" key="GridCell.Tab.1.right" timestamp="1585618146219">
+    <state width="1877" height="315" key="GridCell.Tab.1.right" timestamp="1586052787681">
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1023" height="415" key="GridCell.Tab.1.right/-1480.1080.1333.849/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1585618146219" />
+    <state width="1244" height="315" key="GridCell.Tab.1.right/-1480.1080.1333.849/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1585931835791" />
     <state width="1877" height="260" key="GridCell.Tab.1.right/-1480.1080.1333.849/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1585222965479" />
-    <state width="1877" height="260" key="GridCell.Tab.1.right/-1480.1080.1333.849/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1585227704697" />
-    <state width="1877" height="260" key="GridCell.Tab.1.right/-1480.1080.1333.849/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585303356814" />
+    <state width="1877" height="315" key="GridCell.Tab.1.right/-1480.1080.1333.849/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1586052787681" />
+    <state width="1022" height="315" key="GridCell.Tab.1.right/-1480.1080.1333.849/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1585835665339" />
     <state width="1642" height="190" key="GridCell.Tab.1.right/2862.2160.1536.824/3840.1091.1680.1010/0.0.2194.1194@0.0.2194.1194" timestamp="1584128472037" />
-    <state x="-1395" y="212" key="SettingsEditor" timestamp="1585450573524">
+    <state x="-1395" y="212" key="SettingsEditor" timestamp="1585916964720">
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="-1395" y="212" key="SettingsEditor/-1480.1080.1333.849/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1585450573524" />
+    <state x="-1395" y="212" key="SettingsEditor/-1480.1080.1333.849/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1585916964720" />
     <state x="525" y="212" key="SettingsEditor/-1480.1080.1333.849/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1584474535973" />
     <state x="-1395" y="212" key="SettingsEditor/-1480.1080.1333.849/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1584499507162" />
     <state x="420" y="115" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1583850695616" />
     <state x="600" y="243" key="SettingsEditor/2862.2160.1536.824/3840.1091.1680.1010/0.0.2194.1194@0.0.2194.1194" timestamp="1584037870444" />
-    <state width="968" height="527" key="XDebugger.FullValuePopup" timestamp="1585614284517">
+    <state width="968" height="527" key="XDebugger.FullValuePopup" timestamp="1586048081930">
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="968" height="527" key="XDebugger.FullValuePopup/-1480.1080.1333.849/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1585614284517" />
+    <state width="968" height="527" key="XDebugger.FullValuePopup/-1480.1080.1333.849/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1585687430368" />
     <state width="968" height="527" key="XDebugger.FullValuePopup/-1480.1080.1333.849/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1584468820946" />
-    <state width="968" height="527" key="XDebugger.FullValuePopup/-1480.1080.1333.849/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1585227399757" />
+    <state width="968" height="527" key="XDebugger.FullValuePopup/-1480.1080.1333.849/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1586048081930" />
     <state width="1105" height="605" key="XDebugger.FullValuePopup/2862.2160.1536.824/3840.1091.1680.1010/0.0.2194.1194@0.0.2194.1194" timestamp="1584125730664" />
     <state x="-1216" y="371" key="com.intellij.ide.util.TipDialog" timestamp="1585002619987">
       <screen x="-1920" y="0" width="1920" height="1040" />
@@ -377,15 +356,24 @@
     <state x="-1216" y="371" key="com.intellij.ide.util.TipDialog/-1480.1080.1333.849/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1585002619987" />
     <state x="563" y="294" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1583851296330" />
     <state x="804" y="426" key="com.intellij.ide.util.TipDialog/2862.2160.1536.824/3840.1091.1680.1010/0.0.2194.1194@0.0.2194.1194" timestamp="1584105563232" />
+    <state x="-1149" y="443" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1585751541914">
+      <screen x="-1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="-1149" y="443" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/-1480.1080.1333.849/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1585751541914" />
     <state x="-1342" y="293" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1585618063108">
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
     <state x="-1342" y="293" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/-1480.1080.1333.849/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1585618063108" />
     <state x="661" y="336" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/2862.2160.1536.824/3840.1091.1680.1010/0.0.2194.1194@0.0.2194.1194" timestamp="1584038787594" />
-    <state x="571" y="299" width="850" height="739" maximized="true" key="dock-window-1" timestamp="1585559796113">
+    <state x="652" y="13" width="850" height="739" maximized="true" key="dock-window-1" timestamp="1585747574729">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="571" y="299" width="850" height="739" maximized="true" key="dock-window-1/-1480.1080.1333.849/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1585559796113" />
+    <state x="652" y="13" width="850" height="739" maximized="true" key="dock-window-1/-1480.1080.1333.849/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1585747574729" />
+    <state x="-1253" y="154" width="585" height="732" key="find.popup" timestamp="1586049858421">
+      <screen x="-1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="-1253" y="154" width="585" height="732" key="find.popup/-1480.1080.1333.849/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1585931785117" />
+    <state x="-1253" y="154" width="585" height="732" key="find.popup/-1480.1080.1333.849/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1586049858421" />
     <state width="600" height="424" key="javadoc.popup" timestamp="1584126056133">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
@@ -411,23 +399,53 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/param4BN_learn_from_data_tranfs.py</url>
-          <line>321</line>
+          <line>392</line>
           <option name="timeStamp" value="74" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/param4BN_learn_from_data_tranfs.py</url>
-          <line>185</line>
+          <line>190</line>
           <option name="timeStamp" value="75" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/param4BN_learn_from_data_tranfs.py</url>
-          <line>184</line>
+          <line>189</line>
           <option name="timeStamp" value="79" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/param4BN_learn_from_data_tranfs.py</url>
-          <line>289</line>
-          <option name="timeStamp" value="107" />
+          <line>394</line>
+          <option name="timeStamp" value="114" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/buildBNStructure.py</url>
+          <line>133</line>
+          <option name="timeStamp" value="129" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/buildBNStructure.py</url>
+          <line>126</line>
+          <option name="timeStamp" value="131" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/smile tutorials code/python/tutorial1.py</url>
+          <line>89</line>
+          <option name="timeStamp" value="134" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/smile tutorials code/python/tutorial6.py</url>
+          <line>96</line>
+          <option name="timeStamp" value="136" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/smile tutorials code/python/tutorial6.py</url>
+          <line>99</line>
+          <option name="timeStamp" value="137" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/buildBNStructure.py</url>
+          <line>124</line>
+          <option name="timeStamp" value="139" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="jupyter-line">
           <url>file://$PROJECT_DIR$/src/param4BN_learn_from_data_tranfs.ipynb</url>
@@ -505,8 +523,11 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/BN4Nephrology$tutorial6.coverage" NAME="tutorial6 Coverage Results" MODIFIED="1586047799306" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/smile tutorials code/python" />
     <SUITE FILE_PATH="coverage/SMILE_test$baselineForScr.coverage" NAME="baselineForScr Coverage Results" MODIFIED="1583783096596" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
-    <SUITE FILE_PATH="coverage/BN4Nephrology$param4BN_learn_from_data_tranfs.coverage" NAME="param4BN_learn_from_data_tranfs Coverage Results" MODIFIED="1585618359210" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/BN4Nephrology$buildBNStructure.coverage" NAME="buildBNStructure Coverage Results" MODIFIED="1586052785926" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/BN4Nephrology$param4BN_learn_from_data_tranfs.coverage" NAME="param4BN_learn_from_data_tranfs Coverage Results" MODIFIED="1585871011665" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/BN4Nephrology$tutorial1.coverage" NAME="tutorial1 Coverage Results" MODIFIED="1586051805594" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/smile tutorials code/python" />
     <SUITE FILE_PATH="coverage/SMILE_test$app.coverage" NAME="app Coverage Results" MODIFIED="1581685738226" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/SMILE_test$app__1_.coverage" NAME="app (1) Coverage Results" MODIFIED="1583424019960" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/smile tutorials code/python" />
     <SUITE FILE_PATH="coverage/SMILE_test$hello__1_.coverage" NAME="hello (1) Coverage Results" MODIFIED="1581695355898" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/smile tutorials code/python" />

@@ -1,4 +1,5 @@
 import pysmile
+import pysmile_license
 
 # Tutorial3 loads the XDSL file and prints the information
 # about the structure (nodes and arcs) and the parameters 
@@ -67,3 +68,10 @@ class Tutorial3:
         for i in range(len(dim_sizes) - 1, -1, -1):
             coords[i] = int(index / prod) % dim_sizes[i]
             prod *= dim_sizes[i]
+
+
+def main():
+    Tutorial3()
+
+if __name__ == '__main__':
+    main()
