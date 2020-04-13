@@ -1,4 +1,5 @@
 import collections
+from math import isnan
 from typing import Any, Union
 import pandas as pd
 import numpy as np
@@ -6,13 +7,68 @@ from numpy.core._multiarray_umath import ndarray
 from pandas import Series
 from pandas.core.arrays import ExtensionArray
 import sys
-
 import buildBNStructure
+import math
+from tqdm import tqdm
+
+tqdm.pandas()
+
+# Create a custom logger
+import logging
+logging.basicConfig(format='%(asctime)s - %(message)s', level=logging.INFO)
+
+console_log_level = logging.INFO  # default WARNING
+file_log_level = logging.INFO  # default ERROR
+
+logger = logging.getLogger(__name__)
+
+# Create handlers
+c_handler = logging.StreamHandler()
+f_handler = logging.FileHandler('file.log')
+c_handler.setLevel(console_log_level)
+f_handler.setLevel(file_log_level)
+# Create formatters and add it to handlers
+c_format = logging.Formatter('%(name)s - %(levelname)s - %(message)s')
+f_format = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s -% (message)s')
+c_handler.setFormatter(c_format)
+f_handler.setFormatter(f_format)
+# Add handlers to the logger
+logger.addHandler(c_handler)
+logger.addHandler(f_handler)
 
 
-Interval = collections.namedtuple('Interval', 'lb ub')
+Interval2 = collections.namedtuple('Interval', 'lb ub')
 
 
+class Interval:
+    def __init__(self, lb, ub, lb_included=True, ub_included=True):
+        self.lb = lb
+        self.lb_included = lb_included
+        self.ub = ub
+        self.ub_included = ub_included
+
+    def __str__(self):
+        return f'Interval(lb={self.lb}, ub = {self.ub}, lb_included = {self.lb_included}, ub_included = {self.ub_included})'
+
+    def __contains__(self, x):
+        contains = False
+        if self.lb_included:
+            if self.ub_included:
+                if self.lb <= x <= self.ub:
+                    contains = True
+            else:  # ub excluded
+                if self.lb <= x <= self.ub:
+                    contains = True
+                if self.lb <= x < self.ub:
+                    contains = True
+        else:  # lb excluded
+            if self.ub_included:
+                if self.lb < x <= self.ub:
+                    contains = True
+            else:  # ub exclued
+                if self.lb < x < self.ub:
+                    contains = True
+        return contains
 
 
 baselineKDIGOmol = {'black_male':
@@ -78,7 +134,6 @@ baselineKDIGOmg = {'black_male':
                    }
 
 
-
 def convertCreatinineVals(c):
     mg_per_dL_2_micromol_per_L = 88.4017
     # print('Whole row')
@@ -95,7 +150,7 @@ def convertCreatinineVals(c):
 
 
 def addAge(df1):
-    df1['age_at_admit'] = pd.Series(dtype=pd.Int64Dtype)
+    df1.loc[:,'age_at_admit'] = pd.Series(dtype=pd.Int64Dtype)
 
     def calcAge(row):
         admtTime = row['admittime']
@@ -124,23 +179,27 @@ def addAge(df1):
         # print(f'admtTime = {admtTime}, dob = {dob}, diff ={diff}')
         # print(f'===========================')
         return row
-
-    df1 = df1.apply(lambda r: calcAge(r), axis=1)
+    tqdm.pandas(desc='Calc age')
+    df1 = df1.progress_apply(lambda r: calcAge(r), axis=1)
     return df1
 
 
-
-def getSCrBaseline4Age(age,x):
+def getSCrBaseline4Age(age, x):
+    res = math.nan
     for key, val in x.items():
-        if age>=key.lb and age<=key.ub:
+        if age >= key.lb and age <= key.ub:
             # print(f'age = {age}, Scr baseline = {val}')
-            return val
-
+            res = val
+            break
+    if isnan(val):
+        print('Stop')
+    return val
 
 def getBaselineSCr4Row(row, baselineKDIGOmol):
     age = row['age_at_admit']
     ethnicity = row['ethnicity']
     gender = row['gender']
+    # ToDo: Fix ethnicity to BLACK AND OTHER INSTEAD WHITE AND OTHER
     keyGenderEthn = None
     if ethnicity == 'WHITE':
         if gender == 'M':
@@ -153,39 +212,50 @@ def getBaselineSCr4Row(row, baselineKDIGOmol):
         else:
             keyGenderEthn = 'black_female'
 
-
     subDict = baselineKDIGOmol.get(keyGenderEthn)
     baseline = getSCrBaseline4Age(age, subDict)
     return baseline
 
+def addBaseline_02(df1):
+    dfRes = pd.DataFrame()
+    df1.loc[:,'scr_baseline'] = pd.Series(dtype=float)
+    c = df1.columns.to_list()
+    for k,v in baselineKDIGOmol.items():
+        print(f'k = {k}, v= {v}')
+        for k2, v2 in v.items():
+            print(f'k2 = {k2}')
+            print(f'v2 = {v2}')
+            print()
+    return dfRes
+
+
+
 def addBaseline_01(df1):
     dfRes = pd.DataFrame()
-    df1['scr_baseline'] = pd.Series(dtype=float)
+    df1.loc[:,'scr_baseline'] = pd.Series(dtype=float)
     c = df1.columns.to_list()
-    print()
     # subjIDUnique = df1[]
     unqueSubjID = df1.subject_id.unique()
-    for subj in unqueSubjID:
-        map1 = df1['subject_id']==subj
-        df2 = df1[map1]
-        df2['scr_baseline'] = df2.apply(lambda x: getBaselineSCr4Row(x,baselineKDIGOmol),axis=1)
-        dfRes = dfRes.append(df2)
-        print()
 
-    # groupedBySubj = df1.groupby('subject_id')
-    # xxx = groupedBySubj['creatinine_val_num_mols']
-    #
-    # dfres = groupedBySubj['creatinine_val_num_mols'].tranform(lambda x: getBaselineSCr4Row(x,baselineKDIGOmol))
+    for subj in tqdm(unqueSubjID, desc=f'Baseline SCr for patients'):
+        map1 = df1['subject_id'] == subj
+        df2 = df1[map1]
+        tqdm.pandas(desc=f'Baseline SCr for patients {subj}')
+        try:
+            df2.loc[:,'scr_baseline'] = df2.apply(lambda x: getBaselineSCr4Row(x, baselineKDIGOmol), axis=1)
+        except Exception as e:
+            print(e)
+        dfRes = dfRes.append(df2)
     return dfRes
 
 
 def addBaseline(df1):
-    df1['scr_baseline'] = pd.Series(dtype=float)
+    df1.loc[:,'scr_baseline'] = pd.Series(dtype=float)
     groupedBySubj = df1.groupby('subject_id')
     for subjId, group in groupedBySubj:
         print(f'subjId = {subjId}')
         #     group['scr_baseline'] = group.apply(lambda r:getBaselineSCr4Row(r,baselineKDIGOmol), axis=1)
-        group['scr_baseline'] = group.apply(lambda r: getBaselineSCr4Row(r, baselineKDIGOmol), axis=1)
+        group.loc[:,'scr_baseline'] = group.progress_apply(lambda r: getBaselineSCr4Row(r, baselineKDIGOmol), axis=1)
         # group['scr_baseline']
     df100 = df1.merge(groupedBySubj)
     return df100
@@ -196,24 +266,28 @@ def akiDue2AbsIncrase48H(row, df):
     labDate = row["labevent_charttime"]
     baselineSCr = row['scr_baseline']
     akiPresent = False
-    lowerB_date = labDate-pd.DateOffset(hours=48)
-    selected48HoursIdx = df['labevent_charttime'].between(lowerB_date,labDate)
+    lowerB_date = labDate - pd.DateOffset(hours=48)
+    selected48HoursIdx = df['labevent_charttime'].between(lowerB_date, labDate)
     selected48Hours = df[selected48HoursIdx]
     numSelRows = len(selected48Hours)
-    if numSelRows>0:
-        for i,r in selected48Hours.iterrows():
-            scr_val_micromol = row['creatinine_val_num_mols']
+    if numSelRows > 0:
+        for i, r in selected48Hours.iterrows():
+            try:
+                scr_val_micromol = row['creatinine_val_num_mols']
+            except:
+                logger.debug(f'Some error in akiDue2AbsIncrase48H')
+                print(f'Some error in akiDue2AbsIncrase48H')
             # Rule 1 difference in 48 hours
             try:
                 scrDiff = scr_val_micromol - baselineSCr
-                if (scrDiff)>=26.5:
+                if (scrDiff) >= 26.5:
                     akiPresent = True
             except:
                 e = sys.exc_info()[0]
                 print(e)
-                print()
         # raise NotImplemented()
     return akiPresent
+
 
 def akiDue2RelIncrase7D(row, df):
     # for debugging
@@ -226,52 +300,63 @@ def akiDue2RelIncrase7D(row, df):
     labDate = row["labevent_charttime"]
     baselineSCr = row['scr_baseline']
     akiPresent = False
-    lowerB_date = labDate-pd.DateOffset(days=7)
-    selected48HoursIdx = df['labevent_charttime'].between(lowerB_date,labDate)
+    lowerB_date = labDate - pd.DateOffset(days=7)
+    selected48HoursIdx = df['labevent_charttime'].between(lowerB_date, labDate)
     selected7Days = df[selected48HoursIdx]
     numSelRows = len(selected7Days)
-    if numSelRows>0:
-        for i,r in selected7Days.iterrows():
+    if numSelRows > 0:
+        for i, r in selected7Days.iterrows():
             scr_val_micromol = row['creatinine_val_num_mols']
             # Rule 2 multiple in 7 days
-            ratio = scr_val_micromol/baselineSCr
+            # if np.isnan(scr_val_micromol) | np.isnan(baselineSCr):
+            #     akiPresent = False
+            #     return akiPresent
+            ratio = 0
+            try:
+                ratio = scr_val_micromol / baselineSCr
+            except Exception as e:
+                print(e)
             if ratio >= 1.5:
                 akiPresent = True
                 return akiPresent
-            print()
-
     return akiPresent
 
 
-def akiPresent( row,df):
-    akiPresent = akiDue2AbsIncrase48H(row , df) |  akiDue2RelIncrase7D(row , df)
+def akiPresent(row, df):
+    # ToDo: Complete
+    akiPresent = False
+    try:
+        akiPresent = akiDue2AbsIncrase48H(row, df) | akiDue2RelIncrase7D(row, df)
+    except Exception as e:
+        print(f'row = {row}')
+        print(e)
+        print()
     return akiPresent
 
 
-
-def addAKICol(df1,baselineKDIGOmol):
+def addAKICol(df1, baselineKDIGOmol):
     """
     :param df1: dataframe
     :param baselineKDIGOmol: baseline values for SCr
     """
-    df1['AKI_present'] = pd.Series()
-    df1['AKI_stage_1'] = pd.Series()
-    df1['AKI_stage_2'] = pd.Series()
-    df1['AKI_stage_3'] = pd.Series()
+    df1.loc[:,'AKI_present'] = pd.Series(dtype=bool)
+    df1.loc[:,'AKI_stage_1'] = pd.Series(dtype=bool)
+    df1.loc[:,'AKI_stage_2'] = pd.Series(dtype=bool)
+    df1.loc[:,'AKI_stage_3'] = pd.Series(dtype=bool)
     dfRes = pd.DataFrame()
-    df1['AKI_present'] = pd.Series(dtype=float)
+    df1.loc[:,'AKI_present'] = pd.Series(dtype=float)
     c = df1.columns.to_list()
     # subjIDUnique = df1[]
     unqueSubjID = df1.subject_id.unique()
-    print()
-    for subj in unqueSubjID:
+    tqdm.pandas(desc='Adding AKI present')
+    for subj in tqdm(unqueSubjID):
         map1 = df1['subject_id'] == subj
         df2 = df1[map1]
-        df2['AKI_present'] = df2.apply(lambda r: akiPresent(r, df2), axis=1)
+        tqdm.pandas(desc=f'AKI present for subject {subj}')
+        df2.loc[:,'AKI_present'] = df2.apply(lambda r: akiPresent(r, df2), axis=1)
         dfRes = dfRes.append(df2)
-        print()
-    print()
     return dfRes
+
 
 def addAKIinNext48H4Row(row, df):
     """
@@ -283,13 +368,13 @@ def addAKIinNext48H4Row(row, df):
     c = df.columns.to_list()
     # =============================
     labDate = row["labevent_charttime"]
-    upperB_date = labDate+pd.DateOffset(hours=48)
+    upperB_date = labDate + pd.DateOffset(hours=48)
     selected48HoursIdx = df['labevent_charttime'].between(labDate, upperB_date)
     dfNext48H = df[selected48HoursIdx]
     numSelRows = len(dfNext48H)
     isAKIinNext48H = dfNext48H['AKI_present'].any()
-    print()
     return isAKIinNext48H
+
 
 def addAKIinNext48H(df1):
     """
@@ -297,18 +382,15 @@ def addAKIinNext48H(df1):
     :return:
     """
     dfRes = pd.DataFrame()
-    df1['AKIinNext48H'] = pd.Series() # pd.Series(dtype=float)
+    df1.loc[:,'AKIinNext48H'] = pd.Series()  # pd.Series(dtype=float)
     c = df1.columns.to_list()
     # subjIDUnique = df1[]
     unqueSubjID = df1.subject_id.unique()
-    print()
     for subj in unqueSubjID:
         map1 = df1['subject_id'] == subj
         df2 = df1[map1]
-        df2['AKIinNext48H'] = df2.apply(lambda r: addAKIinNext48H4Row(r, df2), axis=1)
+        df2.loc[:,'AKIinNext48H'] = df2.progress_apply(lambda r: addAKIinNext48H4Row(r, df2), axis=1)
         dfRes = dfRes.append(df2)
-        print()
-    print()
     return dfRes
 
 
@@ -319,17 +401,17 @@ def addDynamicScr(row, df, numPeriods, periodLenghtHours, scrCols):
     labDate = row["labevent_charttime"]
     ub_date = labDate
 
-    for i in range(0,numPeriods):
-        lowerB_date = ub_date - pd.DateOffset(hours=48)+pd.DateOffset(seconds=1)
+    for i in range(0, numPeriods):
+        lowerB_date = ub_date - pd.DateOffset(hours=48) + pd.DateOffset(seconds=1)
         selected48HoursIdx = df['labevent_charttime'].between(lowerB_date, ub_date)
         dfPrev48H = df[selected48HoursIdx]
         numSelRows = len(dfPrev48H)
         scrMean = dfPrev48H['creatinine_val_num_mols'].mean()
         res.append(scrMean)
         # ==========================================
-        print()
-        ub_date= lowerB_date-pd.DateOffset(seconds=1)
+        ub_date = lowerB_date - pd.DateOffset(seconds=1)
     return pd.Series(res)
+
 
 def getDF4DBN(df1):
     """
@@ -339,7 +421,7 @@ def getDF4DBN(df1):
     numPeriods = 4
     periodLenghtHours = 48
     scrCols = ["Scr_level"]
-    scrCols.extend(["Scr_level_"+str(x) for x in range(1,numPeriods)])
+    scrCols.extend(["Scr_level_" + str(x) for x in range(1, numPeriods)])
     dfRes = pd.DataFrame(columns=scrCols)
     print('=======================================')
     # df1['AKIinNext48H'] = pd.Series() # pd.Series(dtype=float)
@@ -349,40 +431,130 @@ def getDF4DBN(df1):
     print('=======================================')
     # numPeriods, periodLenghtHours
     print('=======================================')
-    print()
     for subj in unqueSubjID:
         map1 = df1['subject_id'] == subj
         df2 = df1[map1]
-        df2[scrCols] = df2.apply(lambda r: addDynamicScr(r, df2,numPeriods,periodLenghtHours, scrCols), axis=1)
+
+        df2.loc[:,scrCols] = df2.progress_apply(lambda r: addDynamicScr(r, df2, numPeriods, periodLenghtHours, scrCols), axis=1)
         dfRes = dfRes.append(df2)
-        print()
-    # print()
     return dfRes
 
 
-def main():
-    # df1 = pd.read_csv('../../data/AKI_data_200304_full.csv', nrows=20)
-    df1 = pd.read_csv('../../data/AKI_data_200325_full_dob_v02.csv', nrows=500)
-    df1.drop('hadm_id', axis=1, inplace=True)
+def discretizeSCrSingleVal(x, scrStatesAndIntervals):
+    """
+    For single value
 
-    df1['creatinine_val_num_mols'] = df1.apply(convertCreatinineVals, axis=1)
+    :param x:
+    :param scrStatesAndIntervals:
+    :return:
+    """
+    itms = scrStatesAndIntervals.items()
+    res = None
+    for k, v in scrStatesAndIntervals.items():
+        if x in v:
+            res = k
+            return res
+    # Check if value is none
+    if math.isnan(x):
+        res = "" # "(none)"
+        return res
+    firstState = list(scrStatesAndIntervals.keys())[0]
+    firstInt = scrStatesAndIntervals[firstState]
+    lastState = list(scrStatesAndIntervals.keys())[-1]
+    lastInterval = scrStatesAndIntervals[lastState]
+    if x < firstInt.lb:
+        res = firstState
+    if x > lastInterval.ub:
+        res = lastState
+    return res
+
+
+def discretizeSCrSingleCol(sScr, scrStatesAndIntervals):
+    """
+    Discretization for single column
+
+    :param sScr:
+    :param scrStatesAndIntervals:
+    :return:
+    """
+    newSeries = sScr.progress_apply(lambda v: discretizeSCrSingleVal(v, scrStatesAndIntervals))
+    return newSeries
+
+
+def discretizeSCrVals4MultiCols(sScr, scrStatesAndIntervals):
+    # newSeries = sScr.apply(lambda r: discretizeSCrVal(r,scrStatesAndIntervals))
+    newSeries = sScr.progress_apply(lambda r: discretizeSCrSingleCol(r, scrStatesAndIntervals))
+    return newSeries
+
+
+scrIntervals = [
+    Interval(0, 10, ub_included=False), Interval(10, 20, ub_included=False), Interval(20, 30, ub_included=False),
+    Interval(30, 40, ub_included=False), Interval(40, 50, ub_included=False), Interval(50, 60, ub_included=False),
+    Interval(60, 70, ub_included=False), Interval(70, 80, ub_included=False), Interval(80, 90, ub_included=False),
+    Interval(90, 100, ub_included=False), Interval(100, 110, ub_included=False),
+    Interval(110, 120, ub_included=False),
+    Interval(120, 130, ub_included=False), Interval(130, 140, ub_included=False),
+    Interval(140, 150, ub_included=False),
+    Interval(150, 160, ub_included=False), Interval(160, 170, ub_included=False),
+    Interval(170, 180, ub_included=False),
+    Interval(180, 600, ub_included=False)
+]
+
+scrStates = {f'V{i.lb}_{i.ub}': i for i in scrIntervals}  # 'V00_10': Interval(0, 10)
+
+ageIntervals = [
+    Interval(16, 19), Interval(20, 24), Interval(25, 29), Interval(30, 39), Interval(40, 54), Interval(55, 65),
+    Interval(66, 200)
+]
+
+ageStates = {f'Y{i.lb}_{i.ub}': i for i in ageIntervals}  # 'V00_10': Interval(0, 10)
+
+# AKI_in next 48 hours
+aki48H_states = [True, False]
+genderStates = ["M", "F"]
+
+
+def main():
+    nRows2REad = 200
+    dataFileN = '../../data/AKI_data_200325_full_dob_v02.csv'
+    # df1 = pd.read_csv('../../data/AKI_data_200304_full.csv', nrows=nRows2REad)
+    df1 = readData(dataFileN, nRows2REad)
+    df1.drop('hadm_id', axis=1, inplace=True)
+    tqdm.pandas(desc=f'convertCreatinineVals to micoromols per litre')
+    df1.loc[:,'creatinine_val_num_mols'] = df1.progress_apply(convertCreatinineVals, axis=1)
     print(df1.columns.to_list())
     print(df1.dtypes)
     print(df1['creatinine_val_num_mols'].head())
     print('----------------------------------------------')
-    df1['admittime'] = pd.to_datetime(df1['admittime'])
-    df1['deathtime'] = pd.to_datetime(df1['deathtime'])
-    df1['labevent_charttime'] = pd.to_datetime(df1['labevent_charttime'])
-    df1['dob'] = pd.to_datetime(df1['dob'])
+    df1.loc[:,'admittime'] = pd.to_datetime(df1['admittime'])
+    df1.loc[:,'deathtime'] = pd.to_datetime(df1['deathtime'])
+    df1.loc[:,'labevent_charttime'] = pd.to_datetime(df1['labevent_charttime'])
+    df1.loc[:,'dob'] = pd.to_datetime(df1['dob'])
     print(df1[['admittime', 'dob']].head())
     print('----------------------------------------------')
     df1 = df1.sort_values(by=['subject_id', 'admisssion_hadm_id', 'admittime', 'labevent_charttime'])
     df1 = addAge(df1)
     print(df1['age_at_admit'])
     print('----------------------------------------------')
-    df1 = addBaseline_01(df1)
+    # df1 = addBaseline_01(df1)
+    cols = df1.columns.to_list()
+    print(cols)
+    print(f' "age_at_admit" in df = {"age_at_admit" in df1}')
+    print(f' "gender" in df = {"gender" in df1}')
+    print(f' "ethnicity" in df = {"ethnicity" in df1}')
+    print('===========================')
+    print(df1['age_at_admit'].describe().tolist())
+    print(df1['gender'].describe().tolist())
+    print(df1['ethnicity'].describe().tolist())
+    print('===========================')
+    print(f'Distinct values of "age_at_admit": {df1["age_at_admit"].unique().tolist()}')
+    print(f'Distinct values of ethnicity: {df1["ethnicity"].unique().tolist()}')
+    print(f'Distinct values of "gender": {df1["gender"].unique().tolist()}')
+    print('===========================')
+    df1 = addBaseline_02(df1)
     # df100 = addBaseline_01(df1)
-    df1 = addAKICol(df1,baselineKDIGOmol)
+    # List of node names to learn: 'Gender' , 'Age' , 'AKI48H' , 'Scr_level'
+    df1 = addAKICol(df1, baselineKDIGOmol)
     print(df1.columns.to_list())
     print(df1.head())
     print('AKI_present')
@@ -390,12 +562,65 @@ def main():
     df1 = addAKIinNext48H(df1)
     print(df1.head())
     dfOut = getDF4DBN(df1)
+    cNames = dfOut.columns.to_list()
+    # ['Scr_level', 'Scr_level_1', 'Scr_level_2', 'Scr_level_3', 'subject_id', 'admisssion_hadm_id',
+    # 'labevent_charttime', 'creatinine_val', 'creatinine_val_num', 'creatinine_val_units', 'is_creatinine_value_normal',
+    # 'diagnosis_seq_num', 'diagnosis_icd9_code', 'diagnosis_long_title', 'admission_diagnosis', 'gender', 'ethnicity',
+    # 'admittime', 'deathtime', 'dob', 'creatinine_val_num_mols', 'age_at_admit', 'scr_baseline', 'AKI_present',
+    # 'AKI_stage_1', 'AKI_stage_2', 'AKI_stage_3', 'AKIinNext48H']
+    #  SCR levels
+    dynamicSCRs = ['Scr_level', 'Scr_level_1', 'Scr_level_2', 'Scr_level_3']
+
+    # dfOut['SCr_num_mols_discr'] = discretizeSCrVals(dfOut['creatinine_val_num_mols'],scrStates)
+    # select column
+    translateColnNames = {'gender': 'Gender', 'age_at_admit': 'Age', 'AKIinNext48H': 'AKI48H', 'Scr_level': 'Scr_level',
+                          'Scr_level_1': 'Scr_level_1', 'Scr_level_2': 'Scr_level_2', 'Scr_level_3': 'Scr_level_3'}
+    oldSelectedColName = list(translateColnNames.keys())
+    newSelectedColName = list(translateColnNames.values())
+    # dfOutWONaN.rename(columns=translateColnNames, inplace=True  dfOut.rename(columns=translateColnNames, inplace=True)
+    dfOut.rename(columns=translateColnNames, inplace=True)
+    tqdm.pandas(desc='adding AKI48')
+    dfOut.loc[:,'AKI48H'] = dfOut['AKI48H'].progress_apply(lambda x: convertBooleanToString(x))
+    dfOutBackup = dfOut
+    dfOut = dfOut[newSelectedColName]
+    dfOutWONaN = dfOut.dropna()
+    dfOut.loc[:,dynamicSCRs] = discretizeSCrVals4MultiCols(dfOut[dynamicSCRs], scrStates)
+    dfOutWONaN.loc[:,dynamicSCRs] = discretizeSCrVals4MultiCols(dfOutWONaN[dynamicSCRs], scrStates)
+
+    cols3 = dfOut.columns.to_list()
+    print(cols3)
+    print(dfOut.head(3))
+    # List of node names to learn: 'Gender' , 'Age' , 'AKI48H' , 'Scr_level'
+    # Cols ot keep: 'gender' -  'Gender' | 'age_at_admit' - 'Age' |    'AKIinNext48H' - 'AKI48H' | 'SCr_num_mols_discr' - 'Scr_level'
+
+    outDF2 = dfOut[newSelectedColName]
+    # df1 = pd.read_csv('../../data/AKI_data_200325_full_dob_v02.csv', nrows=500)
+    outDF2.to_csv('../../data/AKI_data_200325_full_dob_v02_forBN_w_NA.csv', index=False)
+    dfOutWONaN.to_csv('../../data/AKI_data_200325_full_dob_v02_forBN_wo_NA.csv', index=False)
     print('----------------------------------------------')
+    # All cols
+    # ['Scr_level', 'Scr_level_1', 'Scr_level_2', 'Scr_level_3', 'subject_id', 'admisssion_hadm_id', 'labevent_charttime',
+    # 'creatinine_val', 'creatinine_val_num', 'creatinine_val_units', 'is_creatinine_value_normal', 'diagnosis_seq_num',
+    # 'diagnosis_icd9_code', 'diagnosis_long_title', 'admission_diagnosis', 'gender', 'ethnicity', 'admittime', 'deathtime',
+    # 'dob', 'creatinine_val_num_mols', 'age_at_admit', 'scr_baseline', 'AKI_present', 'AKI_stage_1', 'AKI_stage_2',
+    # 'AKI_stage_3', 'AKIinNext48H', 'SCr_num_mols_discr']
     print('----------------------------------------------')
+    print('---       FINISHED     -')
     print('----------------------------------------------')
 
 
+def readData(dataFileN, nRows2REad):
+    df1 = pd.DataFrame()
+    if nRows2REad <= 0:
+        df1 = pd.read_csv(dataFileN)
+    else:
+        df1 = pd.read_csv(dataFileN, nrows=nRows2REad)
+    return df1
 
+
+def convertBooleanToString(x):
+    x = 'TRUE' if x else 'FALSE'
+    return x
 
 
 if __name__ == '__main__':
