@@ -52,22 +52,36 @@ class Interval:
 
     def __contains__(self, x):
         contains = False
-        if self.lb_included:
-            if self.ub_included:
-                if self.lb <= x <= self.ub:
-                    contains = True
-            else:  # ub excluded
-                if self.lb <= x <= self.ub:
-                    contains = True
-                if self.lb <= x < self.ub:
-                    contains = True
-        else:  # lb excluded
-            if self.ub_included:
-                if self.lb < x <= self.ub:
-                    contains = True
-            else:  # ub exclued
-                if self.lb < x < self.ub:
-                    contains = True
+
+        if isinstance(x, pd.Series):
+            xdf = x #pd.DataFrame(x)
+            if self.lb_included:
+                if self.ub_included:
+                    contains = ( (xdf>=self.lb) & (xdf<= self.ub))
+                else:  # ub excluded
+                    contains = ((xdf >= self.lb) & (xdf < self.ub))
+            else:  # lb excluded
+                if self.ub_included:
+                    contains = ((xdf > self.lb) & (xdf <= self.ub))
+                else:  # ub exclued
+                    contains = ((xdf > self.lb) & (xdf < self.ub))
+        else:
+            if self.lb_included:
+                if self.ub_included:
+                    if self.lb <= x <= self.ub:
+                        contains = True
+                else:  # ub excluded
+                    if self.lb <= x <= self.ub:
+                        contains = True
+                    if self.lb <= x < self.ub:
+                        contains = True
+            else:  # lb excluded
+                if self.ub_included:
+                    if self.lb < x <= self.ub:
+                        contains = True
+                else:  # ub exclued
+                    if self.lb < x < self.ub:
+                        contains = True
         return contains
 
 
@@ -217,16 +231,36 @@ def getBaselineSCr4Row(row, baselineKDIGOmol):
     return baseline
 
 def addBaseline_02(df1):
-    dfRes = pd.DataFrame()
-    df1.loc[:,'scr_baseline'] = pd.Series(dtype=float)
+    df1.loc[:,'scr_baseline'] = pd.Series(dtype=int)
     c = df1.columns.to_list()
     for k,v in baselineKDIGOmol.items():
         print(f'k = {k}, v= {v}')
-        for k2, v2 in v.items():
-            print(f'k2 = {k2}')
+        ethn, gen = k.upper().split('_')
+        for ageInt, v2 in v.items():
+            print(f'k2 = {ageInt}')
             print(f'v2 = {v2}')
+            bEthnic = df1['ethnicity'] == ethn
+            bGender = df1['gender']==gen[0]
+            bAge = ageInt.__contains__(df1['age_at_admit'])
+            selectedMap = (bAge & bEthnic & bGender)
+            print(df1.loc[selectedMap,'scr_baseline'])
+            print(f'Shape = {df1.loc[selectedMap, "scr_baseline"].shape}')
+            print(f'# row = {df1.loc[selectedMap, "scr_baseline"].shape[0]}')
+            print(f'# rows  = {df1.loc[selectedMap, "scr_baseline"].count()}')
+            print(f'# rows  = {len(df1.loc[selectedMap, "scr_baseline"].index)}')
+            rowCount = df1[selectedMap].shape[0]
+            if rowCount>0:
+                df1.loc[selectedMap,'scr_baseline'] = v2
+            else:
+                print(f'No rows selected for:')
+                print(f'ethn = {ethn}')
+                print(f'gen = {gen}')
+                print(f'age  = {ageInt}')
+                print(f'v2 = {v2}')
+                print()
+            print(df1['scr_baseline'].describe())
             print()
-    return dfRes
+    return df1
 
 
 
@@ -255,6 +289,7 @@ def addBaseline(df1):
     for subjId, group in groupedBySubj:
         print(f'subjId = {subjId}')
         #     group['scr_baseline'] = group.apply(lambda r:getBaselineSCr4Row(r,baselineKDIGOmol), axis=1)
+        tqdm.pandas(desc=f'baseline for subject {subjId}')
         group.loc[:,'scr_baseline'] = group.progress_apply(lambda r: getBaselineSCr4Row(r, baselineKDIGOmol), axis=1)
         # group['scr_baseline']
     df100 = df1.merge(groupedBySubj)
@@ -353,7 +388,7 @@ def addAKICol(df1, baselineKDIGOmol):
         map1 = df1['subject_id'] == subj
         df2 = df1[map1]
         tqdm.pandas(desc=f'AKI present for subject {subj}')
-        df2.loc[:,'AKI_present'] = df2.apply(lambda r: akiPresent(r, df2), axis=1)
+        df2.loc[:,'AKI_present'] = df2.progress_apply(lambda r: akiPresent(r, df2), axis=1)
         dfRes = dfRes.append(df2)
     return dfRes
 
@@ -382,13 +417,14 @@ def addAKIinNext48H(df1):
     :return:
     """
     dfRes = pd.DataFrame()
-    df1.loc[:,'AKIinNext48H'] = pd.Series()  # pd.Series(dtype=float)
+    df1['AKIinNext48H'] = pd.Series()  # pd.Series(dtype=float)
     c = df1.columns.to_list()
     # subjIDUnique = df1[]
     unqueSubjID = df1.subject_id.unique()
     for subj in unqueSubjID:
         map1 = df1['subject_id'] == subj
         df2 = df1[map1]
+        tqdm.pandas(desc=f'Baseline SCr for patients {subj}')
         df2.loc[:,'AKIinNext48H'] = df2.progress_apply(lambda r: addAKIinNext48H4Row(r, df2), axis=1)
         dfRes = dfRes.append(df2)
     return dfRes
@@ -396,11 +432,27 @@ def addAKIinNext48H(df1):
 
 def addDynamicScr(row, df, numPeriods, periodLenghtHours, scrCols):
     c = df.columns.to_list()
+    # =============================
+    labDate = row["labevent_charttime"]
+    ub_date = labDate
+    for col in scrCols:
+        lowerB_date = ub_date - pd.DateOffset(hours=48) + pd.DateOffset(seconds=1)
+        selected48HoursIdx = df['labevent_charttime'].between(lowerB_date, ub_date)
+        dfPrev48H = df[selected48HoursIdx]
+        numSelRows = len(dfPrev48H)
+        scrMean = dfPrev48H['creatinine_val_num_mols'].mean()
+        row[col] = scrMean
+        # ==========================================
+        ub_date = lowerB_date - pd.DateOffset(seconds=1)
+    return row
+
+
+def addDynamicScr0(row, df, numPeriods, periodLenghtHours, scrCols):
+    c = df.columns.to_list()
     res = []
     # =============================
     labDate = row["labevent_charttime"]
     ub_date = labDate
-
     for i in range(0, numPeriods):
         lowerB_date = ub_date - pd.DateOffset(hours=48) + pd.DateOffset(seconds=1)
         selected48HoursIdx = df['labevent_charttime'].between(lowerB_date, ub_date)
@@ -410,7 +462,8 @@ def addDynamicScr(row, df, numPeriods, periodLenghtHours, scrCols):
         res.append(scrMean)
         # ==========================================
         ub_date = lowerB_date - pd.DateOffset(seconds=1)
-    return pd.Series(res)
+    series = pd.Series(res,index=scrCols)
+    return series
 
 
 def getDF4DBN(df1):
@@ -418,10 +471,15 @@ def getDF4DBN(df1):
     :param df1:
     :return:
     """
+    dfxx = pd.DataFrame({'col_1': [0, 1, 2, 3], 'col_2': [4, 5, 6, 7]})
+    # dfxx[['column_new_1', 'column_new_2', 'column_new_3']] = pd.DataFrame([[np.nan, 'dogs',3]], index=dfxx.index)
+    dfxx[['column_new_1', 'column_new_2', 'column_new_3']] = pd.DataFrame([[np.nan]*3], index=dfxx.index)
+
     numPeriods = 4
     periodLenghtHours = 48
     scrCols = ["Scr_level"]
     scrCols.extend(["Scr_level_" + str(x) for x in range(1, numPeriods)])
+    df1[scrCols] = pd.DataFrame([[np.nan]*len(scrCols)],index=df1.index)
     dfRes = pd.DataFrame(columns=scrCols)
     print('=======================================')
     # df1['AKIinNext48H'] = pd.Series() # pd.Series(dtype=float)
@@ -434,8 +492,8 @@ def getDF4DBN(df1):
     for subj in unqueSubjID:
         map1 = df1['subject_id'] == subj
         df2 = df1[map1]
-
-        df2.loc[:,scrCols] = df2.progress_apply(lambda r: addDynamicScr(r, df2, numPeriods, periodLenghtHours, scrCols), axis=1)
+        df2 = df2.apply(lambda r: addDynamicScr(r, df2, numPeriods, periodLenghtHours, scrCols), axis=1)
+        # df2 = df2.apply(lambda r: addDynamicScr(r, df2, numPeriods, periodLenghtHours, scrCols), axis=1)
         dfRes = dfRes.append(df2)
     return dfRes
 
@@ -477,12 +535,14 @@ def discretizeSCrSingleCol(sScr, scrStatesAndIntervals):
     :param scrStatesAndIntervals:
     :return:
     """
+    tqdm.pandas(desc=f'Discretize SCr values')
     newSeries = sScr.progress_apply(lambda v: discretizeSCrSingleVal(v, scrStatesAndIntervals))
     return newSeries
 
 
 def discretizeSCrVals4MultiCols(sScr, scrStatesAndIntervals):
     # newSeries = sScr.apply(lambda r: discretizeSCrVal(r,scrStatesAndIntervals))
+    tqdm.pandas(desc=f'Discretize scr values multiCols')
     newSeries = sScr.progress_apply(lambda r: discretizeSCrSingleCol(r, scrStatesAndIntervals))
     return newSeries
 
@@ -514,8 +574,18 @@ aki48H_states = [True, False]
 genderStates = ["M", "F"]
 
 
+def transformEthnicity4Model(df):
+    bBlack = df['ethnicity'].str.lower()=='black'
+    bOther = ~bBlack
+    print(f"before transform ethnicity = {df['ethnicity'].unique()}")
+    df.loc[bBlack,'ethnicity'] = 'BLACK'
+    df.loc[bOther,'ethnicity'] = 'OTHER'
+    print(f"after transform ethnicity = {df['ethnicity'].unique()}")
+    return df
+
+
 def main():
-    nRows2REad = 200
+    nRows2REad = 0
     dataFileN = '../../data/AKI_data_200325_full_dob_v02.csv'
     # df1 = pd.read_csv('../../data/AKI_data_200304_full.csv', nrows=nRows2REad)
     df1 = readData(dataFileN, nRows2REad)
@@ -543,14 +613,15 @@ def main():
     print(f' "gender" in df = {"gender" in df1}')
     print(f' "ethnicity" in df = {"ethnicity" in df1}')
     print('===========================')
-    print(df1['age_at_admit'].describe().tolist())
-    print(df1['gender'].describe().tolist())
-    print(df1['ethnicity'].describe().tolist())
+    print(df1['age_at_admit'].describe())
+    print(df1['gender'].describe())
+    print(df1['ethnicity'].describe())
     print('===========================')
     print(f'Distinct values of "age_at_admit": {df1["age_at_admit"].unique().tolist()}')
     print(f'Distinct values of ethnicity: {df1["ethnicity"].unique().tolist()}')
     print(f'Distinct values of "gender": {df1["gender"].unique().tolist()}')
     print('===========================')
+    df1 = transformEthnicity4Model(df1)
     df1 = addBaseline_02(df1)
     # df100 = addBaseline_01(df1)
     # List of node names to learn: 'Gender' , 'Age' , 'AKI48H' , 'Scr_level'
