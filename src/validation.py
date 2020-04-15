@@ -55,12 +55,17 @@ def validateWithSMILE(dataFn, modelFN, nFold, outcomeID, targetNodeId):
 def main():
     modelFN = "../models/AKI prediction_Stage_1_Learning_wo_Drug_v004_order03_4_training.xdsl"
     # dataFn = '../../data/AKI_data_200325_full_dob_v02_forBN_wo_NA.csv'
-    dataFn = "C:\Work\dev\dECMT_src\data\AKI_data_200325_full_dob_v02_forBN_wo_NA.csv"
-    outcomeID = 1
-    nFold = 5
+    # dataFn = "C:\Work\dev\dECMT_src\data\AKI_data_200325_full_dob_v02_forBN_wo_NA.csv"
+    dataFn = "C:\Work\dev\dECMT_src\data\AKI_data_200325_full_dob_v02_forBN_w_NA_20-04-14_14-35-01.csv"
+    dataFn = "C:\Work\dev\dECMT_src\data\AKI_data_200325_full_dob_v02_forBN_wo_NA_20-04-14_14-35-01.csv"
+    dataFn = "C:\Work\dev\dECMT_src\data\AKI_data_200325_full_dob_v02_forBN_wo_NA_20-04-14_15-13-35.csv"
+    dataFn = "C:\Work\dev\dECMT_src\data\AKI_data_200325_full_dob_v02_forBN_w_NA_20-04-14_15-13-35.csv"
+    outcomeID = 0
+    nFold = 10
     targetNodeId = "AKI48H"
     accuracyK_Fold = validateWithSMILE(dataFn, modelFN, nFold, outcomeID, targetNodeId)
-    print(f"accuracyK_Fold = {accuracyK_Fold}")
+    print(f"accuracy = {accuracyK_Fold} for {nFold}-fold")
+    print(f"dataset = {dataFn}")
     print('END')
 
 

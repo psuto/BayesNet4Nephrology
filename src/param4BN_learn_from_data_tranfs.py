@@ -266,8 +266,8 @@ def addBaseline_02(df1):
         print(f'k = {k}, v= {v}')
         ethn, gen = k.upper().split('_')
         for ageInt, v2 in v.items():
-            print(f'k2 = {ageInt}')
-            print(f'v2 = {v2}')
+            # print(f'k2 = {ageInt}')
+            # print(f'v2 = {v2}')
             bEthnic = df1['ethnicity'] == ethn
             bGender = df1['gender'] == gen[0]
             bAge = ageInt.__contains__(df1['age_at_admit'])
@@ -453,7 +453,7 @@ def addAKIinNext48H(df1):
     for subj in unqueSubjID:
         map1 = df1['subject_id'] == subj
         df2 = df1[map1]
-        tqdm.pandas(desc=f'Baseline SCr for patients {subj}')
+        tqdm.pandas(desc=f'addAKIinNext48H {subj}')
         df2.loc[:, 'AKIinNext48H'] = df2.progress_apply(lambda r: addAKIinNext48H4Row(r, df2), axis=1)
         dfRes = dfRes.append(df2)
     return dfRes
@@ -518,7 +518,7 @@ def getDF4DBN(df1):
     print('=======================================')
     # numPeriods, periodLenghtHours
     print('=======================================')
-    for subj in tqdm(unqueSubjID, desc=f'Adding SCr'):
+    for subj in tqdm(unqueSubjID, desc=f'4 periods of SCr for patient ({getDF4DBN})'):
         map1 = df1['subject_id'] == subj
         df2 = df1[map1]
         df2 = df2.apply(lambda r: addDynamicScr(r, df2, numPeriods, periodLenghtHours, scrCols), axis=1)
