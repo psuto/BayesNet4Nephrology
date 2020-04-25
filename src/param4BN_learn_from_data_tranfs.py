@@ -101,7 +101,7 @@ class Interval:
 
 
 todayVal = datetime.today()
-todayStr = todayVal.strftime("%y-%m-%d_%H-%M-%S")
+timeStampStr = todayVal.strftime("%y-%m-%d_%H-%M-%S")
 
 baselineKDIGOmol = {'black_male':
                         {Interval(16, 20): 133,
@@ -628,6 +628,7 @@ def main():
     dataFileN = '../../data/AKI_data_200325_full_dob_v02.csv'
     # df1 = pd.read_csv('../../data/AKI_data_200304_full.csv', nrows=nRows2REad)
     df1 = readData(dataFileN, nRows2REad)
+    nRowsIn = len(df1)
     df1.drop('hadm_id', axis=1, inplace=True)
     tqdm.pandas(desc=f'convertCreatinineVals to micoromols per litre')
     df1.loc[:, 'creatinine_val_num_mols'] = df1.progress_apply(convertCreatinineVals, axis=1)
@@ -709,13 +710,13 @@ def main():
     dfOutWONaN = dfOutWONaN[newSelectedColName]
 
     # df1 = pd.read_csv('../../data/AKI_data_200325_full_dob_v02.csv', nrows=500)
-    fnOut_woNADated = f'../../data/AKI_data_200325_full_dob_v02_forBN_wo_NA_{todayStr}.csv'
-    fnOut_wNADated = f'../../data/AKI_data_200325_full_dob_v02_forBN_w_NA_{todayStr}.csv'
-    fnOut_woNA = f'../../data/AKI_data_200325_full_dob_v02_forBN_wo_NA.csv'
-    fnOut_wNA = f'../../data/AKI_data_200325_full_dob_v02_forBN_w_NA.csv'
-    outDF2.to_csv(fnOut_wNA, index=False)
+    fnOut_woNADated = f'../../data/AKI_data_200325_full_dob_v02_forBN_wo_NA_ri_{nRows2REad}_ri2_{nRowsIn}_ro_{len(dfOutWONaN)}_{timeStampStr}.csv'
+    fnOut_wNADated = f'../../data/AKI_data_200325_full_dob_v02_forBN_w_NA_ri_{nRows2REad}_ri2_{nRowsIn}_ro_{len(outDF2)}_{timeStampStr}.csv'
+    # fnOut_woNA = f'../../data/AKI_data_200325_full_dob_v02_forBN_wo_NA.csv'
+    # fnOut_wNA = f'../../data/AKI_data_200325_full_dob_v02_forBN_w_NA.csv'
+    # outDF2.to_csv(fnOut_wNA, index=False)
     outDF2.to_csv(fnOut_wNADated, index=False)
-    dfOutWONaN.to_csv(fnOut_woNA, index=False)
+    # dfOutWONaN.to_csv(fnOut_woNA, index=False)
     dfOutWONaN.to_csv(fnOut_woNADated, index=False)
     print('----------------------------------------------')
     # All cols
