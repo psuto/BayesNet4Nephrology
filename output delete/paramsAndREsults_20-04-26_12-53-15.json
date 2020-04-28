@@ -1,0 +1,25 @@
+{
+    "params": {
+        "nFold": 10,
+        "targetNodeId": "AKI48H",
+        "outcomeID": 0,
+        "inputFile": "C:\\Work\\dev\\dECMT_src\\data\\AKI_data_200325_full_dob_v02_forBN_w_NA_ri_0_ri2_217148_ro_217148_20-04-24_23-30-27.csv",
+        "modelFN": "../models/AKI prediction_Stage_1_Learning_wo_Drug_v004_4timeSteps_1st_order_training.xdsl"
+    },
+    "performance_meassures": {
+        "accuracy": 0.7788290766208251,
+        "conMatrix": [
+            [
+                49553,
+                14072
+            ],
+            [
+                10684,
+                142839
+            ]
+        ],
+        "timeOfCrossValidation_sec": 1156.208535194397,
+        "recordCount": 217148,
+        "outcomeID": 0
+    }
+}

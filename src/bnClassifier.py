@@ -12,13 +12,15 @@ import buildBNStructure
 import param4BN_learn_from_data_tranfs as parBN
 import pysmile
 import pysmile_license
-from param4BN_learn_from_data_tranfs import  readData
+from param4BN_learn_from_data_tranfs import readData
+
 
 class BayesianNetworkClassifier(BaseEstimator, ClassifierMixin):
     """
     Bayesian network classifier.
     """
-    def __init__(self,bayesNetFile):
+
+    def __init__(self, bayesNetFile):
         """
         Called when initializing the classifier
         """
@@ -42,10 +44,10 @@ class BayesianNetworkClassifier(BaseEstimator, ClassifierMixin):
 
         print("")
 
-    def fit(self, X,y=None):
-        dfAll = pd.concat([X,y],axis=1)
+    def fit(self, X, y=None):
+        dfAll = pd.concat([X, y], axis=1)
         tmpFileName = '../../data/tmpDataFit.csv'
-        dfAll.to_csv(tmpFileName,index=False,header=True)
+        dfAll.to_csv(tmpFileName, index=False, header=True)
         print()
         ds = pysmile.learning.DataSet()
         ds.read_file(tmpFileName)
@@ -60,8 +62,8 @@ class BayesianNetworkClassifier(BaseEstimator, ClassifierMixin):
 
 
 def main():
-    nrows=2000
-    bayesNetFile  = "../models/AKI prediction_Stage_1_Learning_wo_Drug_v004_order03_4_training.xdsl"
+    nrows = 2000
+    bayesNetFile = "../models/AKI prediction_Stage_1_Learning_wo_Drug_v004_order03_4_training.xdsl"
     bnC = BayesianNetworkClassifier(bayesNetFile)
     dataWONanFN = '../../data/AKI_data_200325_full_dob_v02_forBN_wo_NA.csv'
     dataWONaN = readData(dataWONanFN, nrows)
@@ -72,8 +74,7 @@ def main():
     x = dataWONaN
     # ds = pysmile.learning.DataSet()
     # ds.read_file("mydatafile.txt")
-    bnC.fit(x,y)
-
+    bnC.fit(x, y)
     print(f'')
 
 

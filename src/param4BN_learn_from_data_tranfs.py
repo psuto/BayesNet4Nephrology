@@ -17,12 +17,7 @@ from tqdm import tqdm
 import logging
 import argparse
 
-parser = argparse.ArgumentParser(description="Simple")
-parser.add_argument("-n", action="store", dest="numRows", type=int, default=0,
-                    help="number of rows to read")
 
-params = parser.parse_args()  # ['--fSimul="oooooooooooooooooo"'],'--fWF="xxxxxxxxxxxxxxxxxxxx"'
-print(params)
 
 tqdm.pandas()
 
@@ -745,4 +740,10 @@ def convertBooleanToString(x):
 
 
 if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description="Simple")
+    parser.add_argument("-n", action="store", dest="numRows", type=int, default=0,
+                        help="number of rows to read")
+
+    params = parser.parse_args()  # ['--fSimul="oooooooooooooooooo"'],'--fWF="xxxxxxxxxxxxxxxxxxxx"'
+    print(params)
     main()
