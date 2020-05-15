@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0efbe20e-0628-4d43-985c-04219f5f5ade" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/BN4Nephrology.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/BN4Nephrology.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/param4BN_learn_from_data_tranfs.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/param4BN_learn_from_data_tranfs.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/validation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/validation_w_na_BN00.bat" beforeDir="false" afterPath="$PROJECT_DIR$/src/validation_w_na_BN00.bat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/validation_w_na_BN01.bat" beforeDir="false" afterPath="$PROJECT_DIR$/src/validation_w_na_BN01.bat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/validation_wo_na_BN00.bat" beforeDir="false" afterPath="$PROJECT_DIR$/src/validation_wo_na_BN00.bat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/validation_wo_na_BN01.bat" beforeDir="false" afterPath="$PROJECT_DIR$/src/validation_wo_na_BN01.bat" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,11 +20,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="JupyterTrust" id="17825e94-71ac-4d3a-8001-991543762894">
-    <option name="files">
-      <option value="src\results_analysis.ipynb" />
-    </option>
-  </component>
+  <component name="JupyterTrust" id="65fe9467-f82a-4176-8d82-3e4ec3d97fb0" />
   <component name="ProjectId" id="1XnUmV6IFentXRzjysOwShtxmic" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -273,6 +261,8 @@
       <workItem from="1588200806746" duration="6746000" />
       <workItem from="1588789224203" duration="306000" />
       <workItem from="1588875360438" duration="136000" />
+      <workItem from="1588892963950" duration="2166000" />
+      <workItem from="1589486906192" duration="1198000" />
     </task>
     <servers />
   </component>
@@ -440,13 +430,13 @@
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
     <state width="254" height="198" key="ShowFilterAction_Filter_Popup/-1480.1080.1333.849/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1586808257900" />
-    <state x="681" y="261" width="800" height="525" key="StructurePopup" timestamp="1588476465067">
+    <state x="681" y="261" width="800" height="525" key="StructurePopup" timestamp="1588893142216">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="-1239" y="261" width="570" height="524" key="StructurePopup/-1480.1080.1333.849/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1587861069218" />
     <state x="681" y="261" width="800" height="525" key="StructurePopup/-1480.1080.1333.849/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1587914930826" />
     <state x="485" y="219" width="570" height="440" key="StructurePopup/0.0.1368.872@0.0.1368.872" timestamp="1587745868182" />
-    <state x="681" y="261" width="800" height="525" key="StructurePopup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1588476465067" />
+    <state x="681" y="261" width="800" height="525" key="StructurePopup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1588893142216" />
     <state width="968" height="527" key="XDebugger.FullValuePopup" timestamp="1586854859388">
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
