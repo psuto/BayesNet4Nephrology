@@ -437,6 +437,7 @@ def addAKIinNext48H4Row(row, df):
 
 def addAKIinNext48H(df1):
     """
+    Adds label if there is AKI present in next 48 hours
     :param df1:
     :return:
     """
