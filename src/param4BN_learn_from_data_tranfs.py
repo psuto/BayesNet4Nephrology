@@ -96,7 +96,7 @@ class Interval:
 
 
 todayVal = datetime.today()
-timeStampStr = todayVal.strftime("%y-%m-%d_%H-%M-%S")
+timeStampStr = todayVal.strftime("%y-%m-%d_%H-%M-%S.%f")
 
 baselineKDIGOmol = {'black_male':
                         {Interval(16, 20): 133,
