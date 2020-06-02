@@ -20,20 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0efbe20e-0628-4d43-985c-04219f5f5ade" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/sandbox/sandbox01.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utilities.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/test_utilities.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/BN4Nephrology.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/BN4Nephrology.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/rGraphicsSettings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/rpackages.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DataPreProcessing4BNV01.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/AKI prediction_Stage_1_Learning_wo_Drug_v004_order03 - Copy.xdsl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/AKI prediction_Stage_1_Learning_wo_Drug_v004_order03.xdsl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/AKI prediction_Stage_1_Learning_wo_Drug_v004_order03_4_training.xdsl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/AKI prediction_Stage_1_Learning_wo_Drug_v004_order03_prog_modified.xdsl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/AKI prediction_Stage_1_Learning_wo_Drug_v004_order03_trained.xdsl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jsonOutput2Csv.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/jsonOutput2Csv.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/sync.ffs_db" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/param4BN_learn_from_data_tranfs.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/param4BN_learn_from_data_tranfs.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test_jsonOutput2Csv.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/test_jsonOutput2Csv.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,7 +62,7 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyIntegratedToolsModulesConfigurable" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
@@ -84,7 +76,26 @@
       <recent name="C:\work\dev\dECMT_src\BN4Nephrology\test" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.pytest in test_utilities.py">
+  <component name="RunManager" selected="Python.DataPreProcessing4BNV01">
+    <configuration name="DataPreProcessing4BNV01" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="BN4Nephrology" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/DataPreProcessing4BNV01.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <module name="BN4Nephrology" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -129,7 +140,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="sandbox01" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="param4BN_learn_from_data_tranfs" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="BN4Nephrology" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -137,12 +148,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/sandbox" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/sandbox/sandbox01.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/param4BN_learn_from_data_tranfs.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -190,23 +201,6 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="pytest in test_jsonOutput2Csv.py" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
-      <module name="BN4Nephrology" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="_new_keywords" value="&quot;&quot;" />
-      <option name="_new_parameters" value="&quot;&quot;" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;$PROJECT_DIR$/test/test_jsonOutput2Csv.py&quot;" />
-      <option name="_new_targetType" value="&quot;PATH&quot;" />
-      <method v="2" />
-    </configuration>
     <configuration name="pytest in test_utilities.py" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="BN4Nephrology" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -227,18 +221,18 @@
     <list>
       <item itemvalue="Python.validation_test" />
       <item itemvalue="Python.jsonOutput2Csv" />
-      <item itemvalue="Python.sandbox01" />
-      <item itemvalue="Python tests.pytest in test_jsonOutput2Csv.py" />
       <item itemvalue="Python tests.pytest for test_jsonOutput2Csv.test_add_data" />
       <item itemvalue="Python tests.pytest in test_utilities.py" />
+      <item itemvalue="Python.param4BN_learn_from_data_tranfs" />
+      <item itemvalue="Python.DataPreProcessing4BNV01" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.DataPreProcessing4BNV01" />
+        <item itemvalue="Python.param4BN_learn_from_data_tranfs" />
         <item itemvalue="Python tests.pytest in test_utilities.py" />
         <item itemvalue="Python.jsonOutput2Csv" />
         <item itemvalue="Python tests.pytest for test_jsonOutput2Csv.test_add_data" />
-        <item itemvalue="Python.sandbox01" />
-        <item itemvalue="Python tests.pytest in test_jsonOutput2Csv.py" />
       </list>
     </recent_temporary>
   </component>
@@ -288,6 +282,7 @@
       <workItem from="1589768231312" duration="16363000" />
       <workItem from="1589838334660" duration="30904000" />
       <workItem from="1590359287623" duration="3542000" />
+      <workItem from="1590587041319" duration="73765000" />
     </task>
     <servers />
   </component>
@@ -307,9 +302,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="689" y="259" key="#Inspections" timestamp="1583424392921">
-      <screen x="0" y="0" width="2194" height="1194" />
+    <state x="603" y="226" key="#Inspections" timestamp="1590942142234">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="603" y="226" key="#Inspections/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1590942142234" />
     <state x="689" y="259" key="#Inspections/2862.2160.1536.824/3840.1091.1680.1010/0.0.2194.1194@0.0.2194.1194" timestamp="1583424392921" />
     <state x="360" y="73" key="#Notifications" timestamp="1583851413290">
       <screen x="0" y="0" width="1536" height="824" />
@@ -327,11 +323,12 @@
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
     <state x="-1180" y="396" width="797" height="342" key="#com.intellij.codeInsight.template.impl.EditVariableDialog/-1480.1080.1333.849/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1586424773006" />
-    <state x="482" y="222" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1587911353757">
+    <state x="482" y="222" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1590947816919">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="-1438" y="222" key="#com.intellij.execution.impl.EditConfigurationsDialog/-1480.1080.1333.849/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1587861861401" />
     <state x="482" y="222" key="#com.intellij.execution.impl.EditConfigurationsDialog/-1480.1080.1333.849/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1587911353757" />
+    <state x="482" y="222" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1590947816919" />
     <state x="551" y="255" key="#com.intellij.execution.impl.EditConfigurationsDialog/2862.2160.1536.824/3840.1091.1680.1010/0.0.2194.1194@0.0.2194.1194" timestamp="1583424589350" />
     <state x="849" y="407" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1583415298799">
       <screen x="0" y="0" width="2194" height="1194" />
@@ -360,17 +357,18 @@
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
     <state x="369" y="350" key="#xdebugger.XInspectDialog/2862.2160.1536.824/3840.1091.1680.1010/0.0.2194.1194@0.0.2194.1194" timestamp="1583423956732" />
-    <state x="1229" y="120" key="#xdebugger.evaluate" timestamp="1589851730863">
+    <state x="1229" y="120" key="#xdebugger.evaluate" timestamp="1590764668286">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="-547" y="121" key="#xdebugger.evaluate/-1480.1080.1333.849/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1586869952039" />
     <state x="-1027" y="445" key="#xdebugger.evaluate/-1480.1080.1333.849/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1586569290432" />
     <state x="876" y="101" key="#xdebugger.evaluate/0.0.1368.872@0.0.1368.872" timestamp="1587647910059" />
-    <state x="1229" y="120" key="#xdebugger.evaluate/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1589851730863" />
-    <state x="-1025" y="316" key="EnvironmentVariablesDialog" timestamp="1587861200706">
-      <screen x="-1920" y="0" width="1920" height="1040" />
+    <state x="1229" y="120" key="#xdebugger.evaluate/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1590764668286" />
+    <state x="895" y="316" key="EnvironmentVariablesDialog" timestamp="1590947739224">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="-1025" y="316" key="EnvironmentVariablesDialog/-1480.1080.1333.849/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1587861200706" />
+    <state x="895" y="316" key="EnvironmentVariablesDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1590947739224" />
     <state x="740" y="279" key="FileChooserDialogImpl" timestamp="1589944834809">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -379,7 +377,7 @@
     <state x="592" y="221" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1583850678391" />
     <state x="740" y="279" key="FileChooserDialogImpl/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1589944834809" />
     <state x="846" y="320" key="FileChooserDialogImpl/2862.2160.1536.824/3840.1091.1680.1010/0.0.2194.1194@0.0.2194.1194" timestamp="1583427505900" />
-    <state width="1877" height="348" key="GridCell.Tab.0.bottom" timestamp="1589984476587">
+    <state width="1877" height="344" key="GridCell.Tab.0.bottom" timestamp="1591081480042">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1875" height="287" key="GridCell.Tab.0.bottom/-1480.1080.1333.849/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1587861502736" />
@@ -388,9 +386,9 @@
     <state width="1875" height="245" key="GridCell.Tab.0.bottom/-1480.1080.1333.849/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1586948573766" />
     <state width="1323" height="231" key="GridCell.Tab.0.bottom/0.0.1368.872@0.0.1368.872" timestamp="1587651319428" />
     <state width="1493" height="320" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1583851254896" />
-    <state width="1877" height="348" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1589984476587" />
+    <state width="1877" height="344" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1591081480042" />
     <state width="1642" height="190" key="GridCell.Tab.0.bottom/2862.2160.1536.824/3840.1091.1680.1010/0.0.2194.1194@0.0.2194.1194" timestamp="1584128471869" />
-    <state width="1877" height="348" key="GridCell.Tab.0.center" timestamp="1589984476586">
+    <state width="1877" height="344" key="GridCell.Tab.0.center" timestamp="1591081480042">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1875" height="287" key="GridCell.Tab.0.center/-1480.1080.1333.849/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1587861502735" />
@@ -399,9 +397,9 @@
     <state width="1875" height="245" key="GridCell.Tab.0.center/-1480.1080.1333.849/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1586948573766" />
     <state width="1323" height="231" key="GridCell.Tab.0.center/0.0.1368.872@0.0.1368.872" timestamp="1587651319428" />
     <state width="1493" height="320" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1583851254896" />
-    <state width="1877" height="348" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1589984476586" />
+    <state width="1877" height="344" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1591081480042" />
     <state width="1642" height="190" key="GridCell.Tab.0.center/2862.2160.1536.824/3840.1091.1680.1010/0.0.2194.1194@0.0.2194.1194" timestamp="1584128471869" />
-    <state width="1877" height="348" key="GridCell.Tab.0.left" timestamp="1589984476585">
+    <state width="1877" height="344" key="GridCell.Tab.0.left" timestamp="1591081480042">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1875" height="287" key="GridCell.Tab.0.left/-1480.1080.1333.849/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1587861502735" />
@@ -410,9 +408,9 @@
     <state width="1875" height="245" key="GridCell.Tab.0.left/-1480.1080.1333.849/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1586948573766" />
     <state width="1323" height="231" key="GridCell.Tab.0.left/0.0.1368.872@0.0.1368.872" timestamp="1587651319428" />
     <state width="1493" height="320" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1583851254896" />
-    <state width="1877" height="348" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1589984476585" />
+    <state width="1877" height="344" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1591081480042" />
     <state width="1642" height="190" key="GridCell.Tab.0.left/2862.2160.1536.824/3840.1091.1680.1010/0.0.2194.1194@0.0.2194.1194" timestamp="1584128471869" />
-    <state width="1877" height="348" key="GridCell.Tab.0.right" timestamp="1589984476586">
+    <state width="1877" height="344" key="GridCell.Tab.0.right" timestamp="1591081480042">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1875" height="287" key="GridCell.Tab.0.right/-1480.1080.1333.849/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1587861502735" />
@@ -421,9 +419,9 @@
     <state width="1875" height="245" key="GridCell.Tab.0.right/-1480.1080.1333.849/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1586948573766" />
     <state width="1323" height="231" key="GridCell.Tab.0.right/0.0.1368.872@0.0.1368.872" timestamp="1587651319428" />
     <state width="1493" height="320" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1583851254896" />
-    <state width="1877" height="348" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1589984476586" />
+    <state width="1877" height="344" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1591081480042" />
     <state width="1642" height="190" key="GridCell.Tab.0.right/2862.2160.1536.824/3840.1091.1680.1010/0.0.2194.1194@0.0.2194.1194" timestamp="1584128471869" />
-    <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1589984476587">
+    <state width="1877" height="344" key="GridCell.Tab.1.bottom" timestamp="1591081480042">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1875" height="287" key="GridCell.Tab.1.bottom/-1480.1080.1333.849/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1587861502736" />
@@ -431,9 +429,9 @@
     <state width="1877" height="290" key="GridCell.Tab.1.bottom/-1480.1080.1333.849/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1586726065842" />
     <state width="1875" height="245" key="GridCell.Tab.1.bottom/-1480.1080.1333.849/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1586948573766" />
     <state width="1323" height="231" key="GridCell.Tab.1.bottom/0.0.1368.872@0.0.1368.872" timestamp="1587651319428" />
-    <state width="1877" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1589984476587" />
+    <state width="1877" height="344" key="GridCell.Tab.1.bottom/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1591081480042" />
     <state width="1642" height="190" key="GridCell.Tab.1.bottom/2862.2160.1536.824/3840.1091.1680.1010/0.0.2194.1194@0.0.2194.1194" timestamp="1584128472037" />
-    <state width="1877" height="348" key="GridCell.Tab.1.center" timestamp="1589984476587">
+    <state width="1877" height="344" key="GridCell.Tab.1.center" timestamp="1591081480042">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1875" height="287" key="GridCell.Tab.1.center/-1480.1080.1333.849/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1587861502736" />
@@ -441,9 +439,9 @@
     <state width="1877" height="290" key="GridCell.Tab.1.center/-1480.1080.1333.849/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1586726065841" />
     <state width="1875" height="245" key="GridCell.Tab.1.center/-1480.1080.1333.849/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1586948573766" />
     <state width="1323" height="231" key="GridCell.Tab.1.center/0.0.1368.872@0.0.1368.872" timestamp="1587651319428" />
-    <state width="1877" height="348" key="GridCell.Tab.1.center/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1589984476587" />
+    <state width="1877" height="344" key="GridCell.Tab.1.center/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1591081480042" />
     <state width="1642" height="190" key="GridCell.Tab.1.center/2862.2160.1536.824/3840.1091.1680.1010/0.0.2194.1194@0.0.2194.1194" timestamp="1584128472037" />
-    <state width="1877" height="348" key="GridCell.Tab.1.left" timestamp="1589984476587">
+    <state width="1877" height="344" key="GridCell.Tab.1.left" timestamp="1591081480042">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1875" height="287" key="GridCell.Tab.1.left/-1480.1080.1333.849/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1587861502736" />
@@ -451,9 +449,9 @@
     <state width="1877" height="290" key="GridCell.Tab.1.left/-1480.1080.1333.849/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1586726065841" />
     <state width="1875" height="245" key="GridCell.Tab.1.left/-1480.1080.1333.849/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1586948573766" />
     <state width="1323" height="231" key="GridCell.Tab.1.left/0.0.1368.872@0.0.1368.872" timestamp="1587651319428" />
-    <state width="1877" height="348" key="GridCell.Tab.1.left/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1589984476587" />
+    <state width="1877" height="344" key="GridCell.Tab.1.left/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1591081480042" />
     <state width="1642" height="190" key="GridCell.Tab.1.left/2862.2160.1536.824/3840.1091.1680.1010/0.0.2194.1194@0.0.2194.1194" timestamp="1584128472037" />
-    <state width="1877" height="348" key="GridCell.Tab.1.right" timestamp="1589984476587">
+    <state width="1877" height="344" key="GridCell.Tab.1.right" timestamp="1591081480042">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1875" height="287" key="GridCell.Tab.1.right/-1480.1080.1333.849/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1587861502736" />
@@ -461,9 +459,9 @@
     <state width="1877" height="290" key="GridCell.Tab.1.right/-1480.1080.1333.849/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1586726065841" />
     <state width="1875" height="245" key="GridCell.Tab.1.right/-1480.1080.1333.849/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1586948573766" />
     <state width="1323" height="231" key="GridCell.Tab.1.right/0.0.1368.872@0.0.1368.872" timestamp="1587651319428" />
-    <state width="1877" height="348" key="GridCell.Tab.1.right/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1589984476587" />
+    <state width="1877" height="344" key="GridCell.Tab.1.right/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1591081480042" />
     <state width="1642" height="190" key="GridCell.Tab.1.right/2862.2160.1536.824/3840.1091.1680.1010/0.0.2194.1194@0.0.2194.1194" timestamp="1584128472037" />
-    <state x="516" y="191" key="SettingsEditor" timestamp="1589939038641">
+    <state x="516" y="191" key="SettingsEditor" timestamp="1590926738624">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="-1395" y="212" key="SettingsEditor/-1480.1080.1333.849/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1586806849402" />
@@ -471,19 +469,19 @@
     <state x="-1395" y="212" key="SettingsEditor/-1480.1080.1333.849/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1584499507162" />
     <state x="368" y="160" key="SettingsEditor/0.0.1368.872@0.0.1368.872" timestamp="1587645365767" />
     <state x="420" y="115" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1583850695616" />
-    <state x="516" y="191" key="SettingsEditor/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1589939038641" />
+    <state x="516" y="191" key="SettingsEditor/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1590926738624" />
     <state x="600" y="243" key="SettingsEditor/2862.2160.1536.824/3840.1091.1680.1010/0.0.2194.1194@0.0.2194.1194" timestamp="1584037870444" />
     <state width="254" height="198" key="ShowFilterAction_Filter_Popup" timestamp="1586808257900">
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
     <state width="254" height="198" key="ShowFilterAction_Filter_Popup/-1480.1080.1333.849/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1586808257900" />
-    <state x="681" y="261" width="800" height="525" key="StructurePopup" timestamp="1590359306064">
+    <state x="0" y="261" width="800" height="525" key="StructurePopup" timestamp="1591065185460">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="-1239" y="261" width="570" height="524" key="StructurePopup/-1480.1080.1333.849/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1587861069218" />
     <state x="681" y="261" width="800" height="525" key="StructurePopup/-1480.1080.1333.849/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1587914930826" />
     <state x="485" y="219" width="570" height="440" key="StructurePopup/0.0.1368.872@0.0.1368.872" timestamp="1587745868182" />
-    <state x="681" y="261" width="800" height="525" key="StructurePopup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1590359306064" />
+    <state x="0" y="261" width="800" height="525" key="StructurePopup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1591065185460" />
     <state width="498" height="446" key="SwitcherDM" timestamp="1589684481717">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -506,11 +504,11 @@
     <state x="-1216" y="371" key="com.intellij.ide.util.TipDialog/-1480.1080.1333.849/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1585002619987" />
     <state x="563" y="294" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1583851296330" />
     <state x="804" y="426" key="com.intellij.ide.util.TipDialog/2862.2160.1536.824/3840.1091.1680.1010/0.0.2194.1194@0.0.2194.1194" timestamp="1584105563232" />
-    <state x="611" y="138" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1589862103413">
+    <state x="611" y="138" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1590974546287">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="-1309" y="138" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/-1480.1080.1333.849/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1586806083998" />
-    <state x="611" y="138" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1589862103413" />
+    <state x="611" y="138" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1590974546287" />
     <state x="771" y="443" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1589933664851">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -522,27 +520,32 @@
     </state>
     <state x="-1342" y="293" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/-1480.1080.1333.849/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1586828096606" />
     <state x="661" y="336" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/2862.2160.1536.824/3840.1091.1680.1010/0.0.2194.1194@0.0.2194.1194" timestamp="1584038787594" />
-    <state x="953" y="0" width="694" height="442" key="dock-window-1" timestamp="1587749830467">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state x="643" y="352" key="com.jetbrains.python.documentation.PythonDocumentationEntryEditor" timestamp="1590724954344">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="643" y="352" key="com.jetbrains.python.documentation.PythonDocumentationEntryEditor/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1590724954344" />
+    <state x="-1743" y="0" width="1274" height="717" maximized="true" key="dock-window-1" timestamp="1591064376885">
+      <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
     <state x="-966" y="0" width="694" height="442" key="dock-window-1/-1480.1080.1333.849/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1587721420344" />
     <state x="953" y="0" width="974" height="527" key="dock-window-1/-1480.1080.1333.849/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1587635959975" />
     <state x="944" y="162" width="800" height="710" maximized="true" key="dock-window-1/-1480.1080.1333.849/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1586723727627" />
     <state x="953" y="0" width="694" height="442" key="dock-window-1/-1480.1080.1333.889/-1920.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1587749830467" />
     <state x="678" y="0" width="694" height="442" key="dock-window-1/0.0.1368.872@0.0.1368.872" timestamp="1587735591230" />
+    <state x="-1743" y="0" width="1274" height="717" maximized="true" key="dock-window-1/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1591064376885" />
     <state x="24" y="0" width="1168" height="872" key="dock-window-2" timestamp="1587749830467">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="-1828" y="0" width="1168" height="1929" key="dock-window-2/-1480.1080.1333.849/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1587721420347" />
     <state x="24" y="0" width="1168" height="872" key="dock-window-2/-1480.1080.1333.889/-1920.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1587749830467" />
     <state x="16" y="0" width="1184" height="880" key="dock-window-2/0.0.1368.872@0.0.1368.872" timestamp="1587742520814" />
-    <state x="667" y="154" width="870" height="732" key="find.popup" timestamp="1589943206497">
+    <state x="667" y="154" width="870" height="732" key="find.popup" timestamp="1591039989291">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="-1253" y="154" width="870" height="732" key="find.popup/-1480.1080.1333.849/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1586876191339" />
     <state x="667" y="154" width="870" height="732" key="find.popup/-1480.1080.1333.849/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1587854428828" />
     <state x="-1253" y="154" width="585" height="732" key="find.popup/-1480.1080.1333.849/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1586049858421" />
-    <state x="667" y="154" width="870" height="732" key="find.popup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1589943206497" />
+    <state x="667" y="154" width="870" height="732" key="find.popup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1591039989291" />
     <state width="600" height="424" key="javadoc.popup" timestamp="1584126056133">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
@@ -575,22 +578,22 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/param4BN_learn_from_data_tranfs.py</url>
-          <line>716</line>
+          <line>760</line>
           <option name="timeStamp" value="74" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/param4BN_learn_from_data_tranfs.py</url>
-          <line>319</line>
+          <line>325</line>
           <option name="timeStamp" value="75" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/param4BN_learn_from_data_tranfs.py</url>
-          <line>318</line>
+          <line>324</line>
           <option name="timeStamp" value="79" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/param4BN_learn_from_data_tranfs.py</url>
-          <line>725</line>
+          <line>769</line>
           <option name="timeStamp" value="114" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -630,12 +633,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/param4BN_learn_from_data_tranfs.py</url>
-          <line>714</line>
+          <line>758</line>
           <option name="timeStamp" value="187" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/param4BN_learn_from_data_tranfs.py</url>
-          <line>712</line>
+          <line>756</line>
           <option name="timeStamp" value="192" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -650,12 +653,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/param4BN_learn_from_data_tranfs.py</url>
-          <line>304</line>
+          <line>310</line>
           <option name="timeStamp" value="198" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/param4BN_learn_from_data_tranfs.py</url>
-          <line>376</line>
+          <line>382</line>
           <option name="timeStamp" value="200" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -685,33 +688,23 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/param4BN_learn_from_data_tranfs.py</url>
-          <line>230</line>
+          <line>236</line>
           <option name="timeStamp" value="212" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/param4BN_learn_from_data_tranfs.py</url>
-          <line>337</line>
+          <line>343</line>
           <option name="timeStamp" value="213" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/param4BN_learn_from_data_tranfs.py</url>
-          <line>391</line>
+          <line>397</line>
           <option name="timeStamp" value="214" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/param4BN_learn_from_data_tranfs.py</url>
-          <line>612</line>
-          <option name="timeStamp" value="266" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/param4BN_learn_from_data_tranfs.py</url>
-          <line>704</line>
+          <line>747</line>
           <option name="timeStamp" value="267" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/param4BN_learn_from_data_tranfs.py</url>
-          <line>623</line>
-          <option name="timeStamp" value="268" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/validation.py</url>
@@ -793,6 +786,51 @@
           <line>6</line>
           <option name="timeStamp" value="324" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/param4BN_learn_from_data_tranfs.py</url>
+          <line>656</line>
+          <option name="timeStamp" value="335" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/param4BN_learn_from_data_tranfs.py</url>
+          <line>798</line>
+          <option name="timeStamp" value="336" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/DataPreProcessing4BNV01.py</url>
+          <line>114</line>
+          <option name="timeStamp" value="337" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/DataPreProcessing4BNV01.py</url>
+          <line>96</line>
+          <option name="timeStamp" value="338" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/DataPreProcessing4BNV01.py</url>
+          <line>106</line>
+          <option name="timeStamp" value="341" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/DataPreProcessing4BNV01.py</url>
+          <line>124</line>
+          <option name="timeStamp" value="342" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/DataPreProcessing4BNV01.py</url>
+          <line>122</line>
+          <option name="timeStamp" value="344" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/DataPreProcessing4BNV01.py</url>
+          <line>42</line>
+          <option name="timeStamp" value="345" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/DataPreProcessing4BNV01.py</url>
+          <line>107</line>
+          <option name="timeStamp" value="348" />
+        </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
@@ -802,18 +840,11 @@
         </breakpoint>
       </default-breakpoints>
     </breakpoint-manager>
-    <watches-manager>
-      <configuration name="PythonConfigurationType">
-        <watch expression="list(row.index)" language="Python" />
-        <watch expression="dfOut[ageMap]" language="Python" />
-        <watch expression="resultDS" language="Python" />
-        <watch expression="resultDS" />
-      </configuration>
-    </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/BN4Nephrology$DataPreProcessing4BNV01.coverage" NAME="DataPreProcessing4BNV01 Coverage Results" MODIFIED="1591064388755" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/BN4Nephrology$baselineForScr.coverage" NAME="baselineForScr Coverage Results" MODIFIED="1583850008791" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
-    <SUITE FILE_PATH="coverage/BN4Nephrology$pytest_in_test_utilities_py.coverage" NAME="pytest in test_utilities.py Coverage Results" MODIFIED="1589945288143" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/BN4Nephrology$pytest_in_test_utilities_py.coverage" NAME="pytest in test_utilities.py Coverage Results" MODIFIED="1590632578965" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
     <SUITE FILE_PATH="coverage/SMILE_test$hello.coverage" NAME="hello Coverage Results" MODIFIED="1581684500497" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/BN4Nephrology$pytest_in_test_jsonOutput2Csv_py.coverage" NAME="pytest in test_jsonOutput2Csv.py Coverage Results" MODIFIED="1589740588483" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/BN4Nephrology$jsonOutput2Csv.coverage" NAME="jsonOutput2Csv Coverage Results" MODIFIED="1589857577002" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
@@ -822,8 +853,8 @@
     <SUITE FILE_PATH="coverage/BN4Nephrology$tutorial1.coverage" NAME="tutorial1 Coverage Results" MODIFIED="1586051805594" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/smile tutorials code/python" />
     <SUITE FILE_PATH="coverage/BN4Nephrology$validation.coverage" NAME="validation Coverage Results" MODIFIED="1587859930433" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/SMILE_test$app__1_.coverage" NAME="app (1) Coverage Results" MODIFIED="1583424019960" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/smile tutorials code/python" />
-    <SUITE FILE_PATH="coverage/BN4Nephrology$param4BN_learn_from_data_tranfs.coverage" NAME="param4BN_learn_from_data_tranfs n=1000 Coverage Results" MODIFIED="1586872209701" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/BN4Nephrology$pytest_for_test_jsonOutput2Csv_test_add_data.coverage" NAME="pytest for test_jsonOutput2Csv.test_add_data Coverage Results" MODIFIED="1589824323144" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/BN4Nephrology$param4BN_learn_from_data_tranfs.coverage" NAME="param4BN_learn_from_data_tranfs Coverage Results" MODIFIED="1590766885110" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/BN4Nephrology$tutorial8.coverage" NAME="tutorial8 Coverage Results" MODIFIED="1584040556461" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/smile tutorials code/python" />
     <SUITE FILE_PATH="coverage/BN4Nephrology$learnBNParameters.coverage" NAME="learnBNParameters Coverage Results" MODIFIED="1586384737989" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/SMILE_test$tutorial1.coverage" NAME="tutorial1 Coverage Results" MODIFIED="1581685692325" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />

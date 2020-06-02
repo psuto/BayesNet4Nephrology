@@ -16,6 +16,7 @@ import math
 from tqdm import tqdm
 import logging
 import argparse
+from pandas.tseries.offsets import DateOffset
 
 
 
@@ -30,7 +31,7 @@ file_log_level = logging.INFO  # default ERROR
 
 logger = logging.getLogger(__name__)
 
-# Create handlers
+# Create handlers for logger
 c_handler = logging.StreamHandler()
 f_handler = logging.FileHandler('file.log')
 c_handler.setLevel(console_log_level)
@@ -46,6 +47,11 @@ logger.addHandler(f_handler)
 
 Interval2 = collections.namedtuple('Interval', 'lb ub')
 
+dynamicSCRs = ['Scr_level', 'Scr_level_1', 'Scr_level_2', 'Scr_level_3']
+translateColnNames = {'gender': 'Gender', 'age_at_admit': 'Age', 'AKIinNext48H': 'AKI48H', 'Scr_level': 'Scr_level',
+                          'Scr_level_1': 'Scr_level_1', 'Scr_level_2': 'Scr_level_2', 'Scr_level_3': 'Scr_level_3'}
+
+newSelectedColName = list(translateColnNames.values())
 
 class Interval:
     def __init__(self, lb, ub, lb_included=True, ub_included=True):
@@ -258,7 +264,7 @@ def addBaseline_02(df1):
     df1.loc[:, 'scr_baseline'] = pd.Series(dtype=int)
     c = df1.columns.to_list()
     for k, v in tqdm(baselineKDIGOmol.items(), desc='addBaseline_02 '):
-        print(f'k = {k}, v= {v}')
+        # print(f'k = {k}, v= {v}')
         ethn, gen = k.upper().split('_')
         for ageInt, v2 in v.items():
             # print(f'k2 = {ageInt}')
@@ -276,11 +282,11 @@ def addBaseline_02(df1):
             if rowCount > 0:
                 df1.loc[selectedMap, 'scr_baseline'] = v2
             else:
-                print(f'No rows selected for:')
-                print(f'ethn = {ethn}')
-                print(f'gen = {gen}')
-                print(f'age  = {ageInt}')
-                print(f'v2 = {v2}')
+                # print(f'No rows selected for:')
+                # print(f'ethn = {ethn}')
+                # print(f'gen = {gen}')
+                # print(f'age  = {ageInt}')
+                # print(f'v2 = {v2}')
                 print()
             # print(df1['scr_baseline'].describe())
             print()
@@ -311,7 +317,7 @@ def addBaseline(df1):
     df1.loc[:, 'scr_baseline'] = pd.Series(dtype=float)
     groupedBySubj = df1.groupby('subject_id')
     for subjId, group in groupedBySubj:
-        print(f'subjId = {subjId}')
+        # print(f'subjId = {subjId}')
         #     group['scr_baseline'] = group.apply(lambda r:getBaselineSCr4Row(r,baselineKDIGOmol), axis=1)
         tqdm.pandas(desc=f'baseline for subject {subjId}')
         group.loc[:, 'scr_baseline'] = group.progress_apply(lambda r: getBaselineSCr4Row(r, baselineKDIGOmol), axis=1)
@@ -618,18 +624,54 @@ def discretizeAge(dfOutL, ageStates):
     return dfOutL
 
 
+def includeRecord(row, df1Patient):
+    """ If in preview 28 days there was AKI the row will not be included in the dataset """
+    isIncluded = True
+    labDate = row["labevent_charttime"]
+    endDate = labDate
+    startdate = labDate - DateOffset(days=28) - DateOffset(nanoseconds=1)
+    inTimeIntervanIdx = df1Patient["labevent_charttime"].between(startdate, endDate, inclusive=False)
+    recInTimeRange = df1Patient[inTimeIntervanIdx]
+    numRows = len(recInTimeRange)
+    #  if there was previously AKI positive in past 4 weeks , exclude the record
+    if numRows > 0 and recInTimeRange['AKI_present'].any():
+        isIncluded = False
+    return isIncluded
+
+
+def excludeRecWPreviousAKI(df):
+    df.loc[:, 'toBeIncuded'] = pd.Series(dtype=bool)
+    dfRes = pd.DataFrame()
+    unqueSubjID = df.subject_id.unique()
+    tqdm.pandas(desc='Filtering out records \\w history of AKI ')
+    for subj in tqdm(unqueSubjID, desc='Adding AKI present'):
+        map1 = df['subject_id'] == subj
+        df2 = df[map1]
+        tqdm.pandas(desc=f'AKI present for subject {subj}')
+        df2.loc[:, 'toBeIncuded'] = df2.apply(lambda r: includeRecord(r, df2), axis=1)
+        dfRes = dfRes.append(df2)
+    # print()
+    dfRemained = dfRes.loc[dfRes['toBeIncuded']]
+    numOriginal = len(dfRes)
+    numRemained = len(dfRemained)
+    return dfRemained
+
+
 def main():
-    nRows2REad = params.numRows
-    print(f'Number rows = {nRows2REad}')
     dataFileN = '../../data/AKI_data_200325_full_dob_v02.csv'
+    dataFileN = '../../data/AKI_data_200325_full_dob_v02_test.csv'
     # df1 = pd.read_csv('../../data/AKI_data_200304_full.csv', nrows=nRows2REad)
+    nRows2REad = params.numRows
+    dataFileN = params.inputDataSetFile
+
+    print(f'Number rows = {nRows2REad}')
     df1 = readData(dataFileN, nRows2REad)
     nRowsIn = len(df1)
     df1.drop('hadm_id', axis=1, inplace=True)
     tqdm.pandas(desc=f'convertCreatinineVals to micoromols per litre')
     df1.loc[:, 'creatinine_val_num_mols'] = df1.progress_apply(convertCreatinineVals, axis=1)
-    print(df1.columns.to_list())
-    print(df1.dtypes)
+    # print(df1.columns.to_list())
+    # print(df1.dtypes)
     # print(df1['creatinine_val_num_mols'].head())
     print('----------------------------------------------')
     df1.loc[:, 'admittime'] = pd.to_datetime(df1['admittime'])
@@ -640,7 +682,7 @@ def main():
     print('----------------------------------------------')
     df1 = df1.sort_values(by=['subject_id', 'admisssion_hadm_id', 'admittime', 'labevent_charttime'])
     df1 = addAge(df1)
-    print(df1['age_at_admit'])
+    # print(df1['age_at_admit'])
     print('----------------------------------------------')
     # df1 = addBaseline_01(df1)
     cols = df1.columns.to_list()
@@ -662,9 +704,11 @@ def main():
     # df100 = addBaseline_01(df1)
     # List of node names to learn: 'Gender' , 'Age' , 'AKI48H' , 'Scr_level'
     df1 = addAKICol(df1, baselineKDIGOmol)
-    print(df1.columns.to_list())
+    df1 = excludeRecWPreviousAKI(df1)
+
+    # print(df1.columns.to_list())
     # print(df1.head())
-    print('AKI_present')
+    # print('AKI_present')
     # print(df1['AKI_present'].head())
     df1 = addAKIinNext48H(df1)
     # print(df1.head())
@@ -676,14 +720,13 @@ def main():
     # 'admittime', 'deathtime', 'dob', 'creatinine_val_num_mols', 'age_at_admit', 'scr_baseline', 'AKI_present',
     # 'AKI_stage_1', 'AKI_stage_2', 'AKI_stage_3', 'AKIinNext48H']
     #  SCR levels
-    dynamicSCRs = ['Scr_level', 'Scr_level_1', 'Scr_level_2', 'Scr_level_3']
+
 
     # dfOut['SCr_num_mols_discr'] = discretizeSCrVals(dfOut['creatinine_val_num_mols'],scrStates)
     # select column
-    translateColnNames = {'gender': 'Gender', 'age_at_admit': 'Age', 'AKIinNext48H': 'AKI48H', 'Scr_level': 'Scr_level',
-                          'Scr_level_1': 'Scr_level_1', 'Scr_level_2': 'Scr_level_2', 'Scr_level_3': 'Scr_level_3'}
+
     oldSelectedColName = list(translateColnNames.keys())
-    newSelectedColName = list(translateColnNames.values())
+
     # dfOutWONaN.rename(columns=translateColnNames, inplace=True  dfOut.rename(columns=translateColnNames, inplace=True)
     dfOut.rename(columns=translateColnNames, inplace=True)
     tqdm.pandas(desc='adding AKI48')
@@ -695,7 +738,7 @@ def main():
     dfOutWONaN.loc[:, dynamicSCRs] = discretizeSCrVals4MultiCols(dfOutWONaN[dynamicSCRs], scrStates)
 
     cols3 = dfOut.columns.to_list()
-    print(cols3)
+    # print(cols3)
     # print(dfOut.head(3))
     # List of node names to learn: 'Gender' , 'Age' , 'AKI48H' , 'Scr_level'
     # Cols ot keep: 'gender' -  'Gender' | 'age_at_admit' - 'Age' |    'AKIinNext48H' - 'AKI48H' | 'SCr_num_mols_discr' - 'Scr_level'
@@ -708,13 +751,14 @@ def main():
     # df1 = pd.read_csv('../../data/AKI_data_200325_full_dob_v02.csv', nrows=500)
     fnOut_woNADated = f'../../data/AKI_data_200325_full_dob_v02_forBN_wo_NA_ri_{nRows2REad}_ri2_{nRowsIn}_ro_{len(dfOutWONaN)}_{timeStampStr}.csv'
     fnOut_wNADated = f'../../data/AKI_data_200325_full_dob_v02_forBN_w_NA_ri_{nRows2REad}_ri2_{nRowsIn}_ro_{len(outDF2)}_{timeStampStr}.csv'
+    # ToDo: End of completed section  *************
     # fnOut_woNA = f'../../data/AKI_data_200325_full_dob_v02_forBN_wo_NA.csv'
     # fnOut_wNA = f'../../data/AKI_data_200325_full_dob_v02_forBN_w_NA.csv'
     # outDF2.to_csv(fnOut_wNA, index=False)
     outDF2.to_csv(fnOut_wNADated, index=False)
     # dfOutWONaN.to_csv(fnOut_woNA, index=False)
     dfOutWONaN.to_csv(fnOut_woNADated, index=False)
-    print('----------------------------------------------')
+    # print('----------------------------------------------')
     # All cols
     # ['Scr_level', 'Scr_level_1', 'Scr_level_2', 'Scr_level_3', 'subject_id', 'admisssion_hadm_id', 'labevent_charttime',
     # 'creatinine_val', 'creatinine_val_num', 'creatinine_val_units', 'is_creatinine_value_normal', 'diagnosis_seq_num',
@@ -742,9 +786,14 @@ def convertBooleanToString(x):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Simple")
-    parser.add_argument("-n", action="store", dest="numRows", type=int, default=0,
+    parser.add_argument("-n", action="store", dest="numRows", type=int, default=2000,
                         help="number of rows to read")
+    parser.add_argument("--fds", action="store", dest="inputDataSetFile", type=str, default='../../data/AKI_data_200325_full_dob_v02_test.csv',
+                        help="file path to file with csv dataset file (default = '../../data/AKI_data_200325_full_dob_v02_test.csv')")
 
-    params = parser.parse_args()  # ['--fSimul="oooooooooooooooooo"'],'--fWF="xxxxxxxxxxxxxxxxxxxx"'
+    params = parser.parse_args()  #
+    print("*****************************")
+    print("Input parameters:")
     print(params)
+    print("*****************************")
     main()
