@@ -10,7 +10,7 @@ def main():
     dfTypes =  dataWONaN.dtypes
     # ***********************************
     ds = pysmile.learning.DataSet()
-    ds
+
 
 
     print(f'')

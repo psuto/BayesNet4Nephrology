@@ -2,37 +2,30 @@ import argparse
 from builtins import print
 
 import param4BN_learn_from_data_tranfs as pp
-from abc import ABC, abstractclassmethod
 import pandas as pd
-from param4BN_learn_from_data_tranfs import readData,tqdm,addAge,transformEthnicity4Model,addBaseline_02,\
-    baselineKDIGOmol,addAKICol,excludeRecWPreviousAKI
+
+from DataPreProcessing import DataPreProcessing
+from DataPreprocessingContext import DataPreprocessingContext
+from param4BN_learn_from_data_tranfs import tqdm, addAge, transformEthnicity4Model, addBaseline_02, \
+    baselineKDIGOmol, addAKICol, excludeRecWPreviousAKI
 from collections import namedtuple
 
+ResultingDF = namedtuple('ResultingDFs', 'df dfWoNA')
 
-ResultingDF = namedtuple('ResultingDFs','df dfWoNA')
 
 def preprocessData():
     df = pd.DataFrame
 
-class DataPreProcessing(ABC):
-    @abstractclassmethod
-    def preprocess(self,dataFrame):
-        pass
-
-    @abstractclassmethod
-    def preprocessAndSave(self,dataFrame):
-        pass
-
-    @abstractclassmethod
-    def saveToCSVFile(self, resultingDataFrames):
-        pass
-
-
-
 
 class DataPreProcessing4BNv01(DataPreProcessing):
+
     def __init__(self):
-        pass
+        _processingVersion = "dbn_v01"
+
+    @property
+    def processingVersion(self):
+        return self._processingVersion
+
 
     def saveToCSVFile(self, resultingDataFrames):
         fnOut_woNADated = f'../../data/AKI_data_Phase1v01_Phase2_' \
@@ -43,15 +36,12 @@ class DataPreProcessing4BNv01(DataPreProcessing):
         resultingDataFrames.df.to_csv(fnOut_wNADated, index=False)
         resultingDataFrames.dfWoNA.to_csv(fnOut_woNADated, index=False)
 
-
-
     def preprocessAndSave(self, dataFrame):
         res = preprocessData()
         df = res.get("")
         dfWoNA = res.get("")
 
-
-    def preprocess(self,dataFrame):
+    def preprocess(self, dataFrame):
         """ transformations applied to raw data """
         df1 = dataFrame
         df1.drop('hadm_id', axis=1, inplace=True)
@@ -77,7 +67,7 @@ class DataPreProcessing4BNv01(DataPreProcessing):
         df1 = df1[pp.newSelectedColName]
         df1WONaN = pp.discretizeAge(df1WONaN, pp.ageStates)
         df1WONaN = df1WONaN[pp.newSelectedColName]
-        result = ResultingDF(df1,df1WONaN)
+        result = ResultingDF(df1, df1WONaN)
         return result
 
     def convertColumns2DateTime(self, df1):
@@ -87,25 +77,10 @@ class DataPreProcessing4BNv01(DataPreProcessing):
         df1 = self.convetStringToDateTime(df1, 'dob')
         return df1
 
-    def convetStringToDateTime(self, df1,colName):
+    def convetStringToDateTime(self, df1, colName):
         df1.loc[:, colName] = pd.to_datetime(df1[colName])
         return df1
 
-
-class DataPreprocessingContext():
-    def __init__(self,dataFileName, nRows2Read, dataPreProcessor):
-        self._dataFrame =  readData(dataFileName, nRows2Read)# dataframe
-        self._dataFileName = dataFileName
-        self.nRows2Read = nRows2Read
-
-
-    def setDataPreProcessor(self, dataPreProcessor):
-        self.dataPreProcessor = dataPreProcessor
-
-
-    def preprocess(self):
-        results = self.dataPreProcessor.preprocess(self._dataFrame)
-        return results
 
 def main():
     # Todo: Extract info from input data to see versio of 'raw' data
@@ -118,7 +93,7 @@ def main():
     dataProcessor = None
     if preProcessorName == 'BNv01':
         dataProcessor = DataPreProcessing4BNv01()
-    dataPreprocessingContext = DataPreprocessingContext(dataFileN,nRows2REad,dataProcessor)
+    dataPreprocessingContext = DataPreprocessingContext(dataFileN, nRows2REad, dataProcessor)
     dataPreprocessingContext.setDataPreProcessor(dataProcessor)
     results = dataPreprocessingContext.preprocess()
     dataPreprocessingContext.saveToCSVFile(results)
@@ -130,7 +105,8 @@ if __name__ == '__main__':
     parser.add_argument("-n", action="store", dest="numRows", type=int, default=2000,
                         help="number of rows to read")
 
-    parser.add_argument("--fds", action="store", dest="inputDataSetFile", type=str, default='../../data/AKI_data_200325_full_dob_v02_test.csv',
+    parser.add_argument("--fds", action="store", dest="inputDataSetFile", type=str,
+                        default='../../data/AKI_data_200325_full_dob_v02_test.csv',
                         help="file path to file with csv dataset file (default = '../../data/AKI_data_200325_full_dob_v02_test.csv')")
 
     parser.add_argument("--ppId", action="store", dest="preprocessorID", type=str, default='BNv01',
