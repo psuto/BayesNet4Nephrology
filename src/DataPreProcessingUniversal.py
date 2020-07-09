@@ -1,5 +1,6 @@
 import argparse
 import pathlib
+from builtins import staticmethod
 
 import pandas as pd
 from tqdm import tqdm
@@ -12,53 +13,6 @@ from DataPreprocessingMethods import DataPreprocessingMethods
 import param4BN_learn_from_data_tranfs as pp
 from collections import namedtuple
 
-
-def addDynamicScr(row, df1, numPeriods, periodLenghtHours):
-    """
-    Sort it into two numPeriods periods
-
-    :param r:
-    :type r:
-    :param df2:
-    :type df2:
-    :param numPeriods:
-    :type numPeriods:
-    :param periodLenghtHours:
-    :type periodLenghtHours:
-    :param scrCols:
-    :type scrCols:
-    :return:
-    :rtype:
-    """
-    pass
-    colNames = list(df1.columns)
-    df2 = pd.DataFrame(columns=colNames)
-    # ['subject_id', 'admisssion_hadm_id', 'labevent_charttime', 'creatinine_val', 'creatinine_val_num',
-    # 'creatinine_val_units', 'is_creatinine_value_normal', 'diagnosis_seq_num', 'diagnosis_icd9_code',
-    # 'diagnosis_long_title', 'admission_diagnosis', 'gender', 'ethnicity', 'admittime', 'deathtime', 'dob',
-    # 'creatinine_val_num_mols', 'age_at_admit', 'scr_baseline', 'AKI_present', 'AKI_stage_1', 'AKI_stage_2',
-    # 'AKI_stage_3', 'toBeIncuded', 'AKIinNext48H', 'Scr_level', 'Scr_level_1', 'Scr_level_2', 'Scr_level_3']
-    dfN = pd.DataFrame([row] * numPeriods)
-    dfN['Time_Period'] = range(1, 5)
-    newScRCol = 'ScR4Period'
-    dfN[newScRCol] = 0
-    labDate = row["labevent_charttime"]
-    ub_date = labDate
-    newScRColVals = []
-    for lIndex, lRow in dfN.iterrows():
-        lowerB_date = ub_date - pd.DateOffset(hours=periodLenghtHours) + pd.DateOffset(seconds=1)
-        selected48HoursIdx = df1['labevent_charttime'].between(lowerB_date, ub_date)
-        dfPrev48H = df1[selected48HoursIdx]
-        numSelRows = len(dfPrev48H)
-        scrMean = dfPrev48H['creatinine_val_num_mols'].mean()
-        newScRColVals.append(scrMean)
-        # ==========================================
-        ub_date = lowerB_date - pd.DateOffset(seconds=1)
-        pass
-    dfN[newScRCol] = newScRColVals
-    return dfN
-
-
 class DataPreProcessing4GP00(DataPreProcessing4BNv01, DataPreprocessingMethods):
     # ['subject_id', 'admisssion_hadm_id', 'labevent_charttime', 'creatinine_val', 'creatinine_val_num',
     # 'creatinine_val_units', 'is_creatinine_value_normal', 'diagnosis_seq_num', 'diagnosis_icd9_code',
@@ -68,21 +22,18 @@ class DataPreProcessing4GP00(DataPreProcessing4BNv01, DataPreprocessingMethods):
     # ===============================================================================================================
     #  ['Gender', 'Age', 'AKI48H', 'Scr_level', 'Time_Period', 'ScR4Period']
     translateColnNames = {
-                            'subject_id':"id", 'gender': 'Gender', 'age_at_admit': 'Age', 'AKIinNext48H': 'AKI48H', 'Scr_level': 'Scr_level',
-                             'Time_Period':'Time_Period', 'ScR4Period':'ScR4Period'
+        'subject_id':"id", 'gender': 'Gender', 'age_at_admit': 'Age', 'AKIinNext48H': 'AKI48H', 'Scr_level': 'Scr_level',
+        'Time_Period':'Time_Period', 'ScR4Period':'ScR4Period'
 
-                          }
-
+    }
     newSelectedColName = [
         'id', 'Gender', 'Age', 'AKI48H', 'Time_Period', 'ScR4Period'
     ]
-
 
     def preprocess(self, dataFrame):
         """
         Calculates ScR values per 4 periods (parametrized)  each as average over 48 hours (parametrized)
         """
-        df1 = dataFrame
         df1 = dataFrame
         df1.drop('hadm_id', axis=1, inplace=True)
         tqdm.pandas(desc=f'convertCreatinineVals to micoromols per litre')
@@ -135,8 +86,54 @@ class DataPreProcessing4GP00(DataPreProcessing4BNv01, DataPreprocessingMethods):
         return result
 
 
-    @staticmethod
-    def scrVals4GP(df1: pd.DataFrame):
+    def addDynamicScr(self,row, df1, numPeriods, periodLenghtHours):
+        """
+        Sort it into two numPeriods periods
+
+        :param r:
+        :type r:
+        :param df2:
+        :type df2:
+        :param numPeriods:
+        :type numPeriods:
+        :param periodLenghtHours:
+        :type periodLenghtHours:
+        :param scrCols:
+        :type scrCols:
+        :return:
+        :rtype:
+        """
+        pass
+        colNames = list(df1.columns)
+        df2 = pd.DataFrame(columns=colNames)
+        # ['subject_id', 'admisssion_hadm_id', 'labevent_charttime', 'creatinine_val', 'creatinine_val_num',
+        # 'creatinine_val_units', 'is_creatinine_value_normal', 'diagnosis_seq_num', 'diagnosis_icd9_code',
+        # 'diagnosis_long_title', 'admission_diagnosis', 'gender', 'ethnicity', 'admittime', 'deathtime', 'dob',
+        # 'creatinine_val_num_mols', 'age_at_admit', 'scr_baseline', 'AKI_present', 'AKI_stage_1', 'AKI_stage_2',
+        # 'AKI_stage_3', 'toBeIncuded', 'AKIinNext48H', 'Scr_level', 'Scr_level_1', 'Scr_level_2', 'Scr_level_3']
+        dfN = pd.DataFrame([row] * numPeriods)
+        dfN['Time_Period'] = range(1, 5)
+        newScRCol = 'ScR4Period'
+        dfN[newScRCol] = 0
+        labDate = row["labevent_charttime"]
+        ub_date = labDate
+        newScRColVals = []
+        for lIndex, lRow in dfN.iterrows():
+            lowerB_date = ub_date - pd.DateOffset(hours=periodLenghtHours) + pd.DateOffset(seconds=1)
+            selected48HoursIdx = df1['labevent_charttime'].between(lowerB_date, ub_date)
+            dfPrev48H = df1[selected48HoursIdx]
+            numSelRows = len(dfPrev48H)
+            scrMean = dfPrev48H['creatinine_val_num_mols'].mean()
+            newScRColVals.append(scrMean)
+            # ==========================================
+            ub_date = lowerB_date - pd.DateOffset(seconds=1)
+            pass
+        dfN[newScRCol] = newScRColVals
+        return dfN
+
+
+
+    def scrVals4GP(self,df1: pd.DataFrame):
         """
 
         :param df1:
@@ -165,7 +162,7 @@ class DataPreProcessing4GP00(DataPreProcessing4BNv01, DataPreprocessingMethods):
             map1 = df1['subject_id'] == subj
             df2: pd.DataFrame = df1[map1]
             for index, row in df2.iterrows():
-                dfNTmp = addDynamicScr(row, df2, numPeriods, periodLenghtHours)
+                dfNTmp = self.addDynamicScr(row, df2, numPeriods, periodLenghtHours)
                 dfN = pd.concat([dfN, dfNTmp], ignore_index=True)
         return dfN
 
@@ -173,12 +170,12 @@ class DataPreProcessing4GP00(DataPreProcessing4BNv01, DataPreprocessingMethods):
         pass
 
     def saveToCSVFile(self, resultingDataFrames,nRows2REad,inputFileVersionInfo:InputFileVersionInfo,outputDirPath):
-        fnOut_woNADated = f'{self._processingVersion}_{inputFileVersionInfo.versionString}_ri_'\
-                          f'{nRows2REad}_ro_{len(resultingDataFrames.dfWoNA)}'\
+        fnOut_woNADated = f'{self._processingVersion}_{inputFileVersionInfo.versionString}_ri_' \
+                          f'{nRows2REad}_ro_{len(resultingDataFrames.dfWoNA)}' \
                           f'_{self._processingVersion}_woNA_D_{pp.timeStampStr}.csv'
-        fnOut_wNADated = f'{self._processingVersion}_{inputFileVersionInfo.versionString}_ri_'\
-                          f'{nRows2REad}_ro_{len(resultingDataFrames.dfWoNA)}'\
-                          f'_{self._processingVersion}_wNA_D_{pp.timeStampStr}.csv'
+        fnOut_wNADated = f'{self._processingVersion}_{inputFileVersionInfo.versionString}_ri_' \
+                         f'{nRows2REad}_ro_{len(resultingDataFrames.dfWoNA)}' \
+                         f'_{self._processingVersion}_wNA_D_{pp.timeStampStr}.csv'
         # outputDirPath
         fnOut_woNADated = outputDirPath / fnOut_woNADated
         fnOut_wNADated =  outputDirPath / fnOut_wNADated
@@ -195,6 +192,9 @@ class DataPreProcessing4GP00(DataPreProcessing4BNv01, DataPreprocessingMethods):
         super(DataPreProcessing4BNv01, self).__init__()
         self._processingVersion = 'Ph2_GP_V00'
 
+    @property
+    def processingVersion(self):
+        return self._processingVersion
 
     @property
     def nRows2Read(self):
@@ -205,6 +205,125 @@ class DataPreProcessing4GP00(DataPreProcessing4BNv01, DataPreprocessingMethods):
         return self._processingVersion
 
 
+class DataPreProcessingVarModelsGrp1(DataPreProcessing4GP00, DataPreProcessing4BNv01, DataPreprocessingMethods):
+    def __init__(self,numPeriods = 4,periodLenghtHours = 48):
+        DataPreProcessing4GP00.__init__(self)
+        self._numPeriods = numPeriods
+        self._periodLenghtHours = periodLenghtHours
+        pass
+
+    @property
+    def numPeriods(self):
+        return self._numPeriods
+
+    @property
+    def periodLenghtHours(self):
+        return self._processingVersion
+
+
+    def preprocess(self, dataFrame):
+        df1 = dataFrame
+        df1.drop('hadm_id', axis=1, inplace=True)
+        tqdm.pandas(desc=f'convertCreatinineVals to micoromols per litre')
+        df1.loc[:, 'creatinine_val_num_mols'] = df1.progress_apply(pp.convertCreatinineVals, axis=1)
+        df1 = self.convertColumns2DateTime(df1)
+        df1 = df1.sort_values(by=['subject_id', 'admisssion_hadm_id', 'admittime', 'labevent_charttime'])
+        df1 = pp.addAge(df1)
+        df1 = pp.transformEthnicity4Model(df1)
+        df1 = pp.addBaseline_02(df1)
+        # ToDo Add Forward and Back2ward approach for AKI48H labeling
+        df1 = pp.addAKICol(df1, pp.baselineKDIGOmol)
+        df1 = pp.excludeRecWPreviousAKI(df1)
+        df1 = pp.addAKIinNext48H(df1)
+        df1 = self.Periods2Variables(df1)
+        df1 = self.scrContVals4VMG1(df1) # Various models group
+        # ToDo: Contiunue Here
+        pass
+
+
+    def addDynamicScr(self,row, df1, numPeriods, periodLenghtHours):
+        """
+        Sort it into two numPeriods periods
+
+        :param r:
+        :type r:
+        :param df2:
+        :type df2:
+        :param numPeriods:
+        :type numPeriods:
+        :param periodLenghtHours:
+        :type periodLenghtHours:
+        :param scrCols:
+        :type scrCols:
+        :return:
+        :rtype:
+        """
+        pass
+        colNames = list(df1.columns)
+        df2 = pd.DataFrame(columns=colNames)
+        # ['subject_id', 'admisssion_hadm_id', 'labevent_charttime', 'creatinine_val', 'creatinine_val_num',
+        # 'creatinine_val_units', 'is_creatinine_value_normal', 'diagnosis_seq_num', 'diagnosis_icd9_code',
+        # 'diagnosis_long_title', 'admission_diagnosis', 'gender', 'ethnicity', 'admittime', 'deathtime', 'dob',
+        # 'creatinine_val_num_mols', 'age_at_admit', 'scr_baseline', 'AKI_present', 'AKI_stage_1', 'AKI_stage_2',
+        # 'AKI_stage_3', 'toBeIncuded', 'AKIinNext48H', 'Scr_level', 'Scr_level_1', 'Scr_level_2', 'Scr_level_3']
+        dfN = pd.DataFrame([row] * numPeriods)
+        dfN['Time_Period'] = range(1, 5)
+        newScRCol = 'ScR4Period'
+        dfN[newScRCol] = 0
+        labDate = row["labevent_charttime"]
+        ub_date = labDate
+        newScRColVals = []
+        for lIndex, lRow in dfN.iterrows():
+            lowerB_date = ub_date - pd.DateOffset(hours=periodLenghtHours) + pd.DateOffset(seconds=1)
+            selected48HoursIdx = df1['labevent_charttime'].between(lowerB_date, ub_date)
+            dfPrev48H = df1[selected48HoursIdx]
+            numSelRows = len(dfPrev48H)
+            scrMean = dfPrev48H['creatinine_val_num_mols'].mean()
+            newScRColVals.append(scrMean)
+            # ==========================================
+            ub_date = lowerB_date - pd.DateOffset(seconds=1)
+            pass
+        dfN[newScRCol] = newScRColVals
+        return dfN
+
+
+    def scrContVals4VMG1(self, df1):
+        """
+
+                :param df1:
+                :type df1:
+                :return:
+                :rtype:
+                """
+        numPeriods = 4
+        periodLenghtHours = 48
+        # scrCols = ["Scr_level"]
+        # scrCols.extend(["Scr_level_" + str(x) for x in range(1, numPeriods)])
+        # df1[scrCols] = pd.DataFrame([[np.nan] * len(scrCols)], index=df1.index)
+        # dfRes = pd.DataFrame(columns=scrCols)
+        print('=======================================')
+        # df1['AKIinNext48H'] = pd.Series() # pd.Series(dtype=float)
+        c = df1.columns.to_list()
+        # # subjIDUnique = df1[]
+        unqueSubjID = df1.subject_id.unique()
+        print('=======================================')
+        # numPeriods, periodLenghtHours
+        print('=======================================')
+        patID = "None"
+        dfN: pd.DataFrame = pd.DataFrame()
+        for subj in tqdm(unqueSubjID, desc=f'4 periods of SCr for previouse patient {patID} scrVals4GP'):
+            patID = subj
+            map1 = df1['subject_id'] == subj
+            df2: pd.DataFrame = df1[map1]
+            for index, row in df2.iterrows():
+                dfNTmp = self.addDynamicScr(row, df2, numPeriods, periodLenghtHours)
+                dfN = pd.concat([dfN, dfNTmp], ignore_index=True)
+        return dfN
+
+    def Periods2Variables(self, df1):
+        pass
+
+
 if __name__ == "__main__":
     def main():
         nRows2REad = params.numRows
@@ -213,6 +332,8 @@ if __name__ == "__main__":
         dataProcessor = None
         if preProcessorName == 'Ph2_GP_V00':
             dataProcessor = DataPreProcessing4GP00()
+        if preProcessorName == 'Ph2_VMG1_V00': # Various models group 1
+            dataProcessor = DataPreProcessingVarModelsGrp1()
         dataPreprocessingContext = DataPreprocessingContext(dataFileN, nRows2REad, dataProcessor)
         dataPreprocessingContext.setDataPreProcessor(dataProcessor)
         results = dataPreprocessingContext.preprocess()

@@ -5,13 +5,19 @@ class DataPreProcessing(ABC):
 
     _processingVersion = "dbn_v01"
 
-    @abstractmethod
     @property
+    @abstractmethod
+    def nRows2Read(self):
+        pass
+
+    @property
+    @abstractmethod
     def processingVersion(self):
-        return self._processingVersion
+        pass
 
     @abstractmethod
     def preprocess(self,dataFrame):
+        raise NotImplementedError
         pass
 
     @abstractmethod
@@ -19,5 +25,5 @@ class DataPreProcessing(ABC):
         pass
 
     @abstractmethod
-    def saveToCSVFile(self, resultingDataFrames):
+    def saveToCSVFile(self, resultingDataFrames,nRows2Read,inputFileInfoStr):
         pass

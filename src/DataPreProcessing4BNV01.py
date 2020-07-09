@@ -20,26 +20,46 @@ def preprocessData():
 class DataPreProcessing4BNv01(DataPreProcessing):
 
     def __init__(self):
-        _processingVersion = "dbn_v01"
+        # self._processingVersion =  "BN_v01"
+        self._processingVersion = "Ph2_BN_V00"
 
-    @property
+    @staticmethod
     def processingVersion(self):
         return self._processingVersion
 
 
-    def saveToCSVFile(self, resultingDataFrames):
-        fnOut_woNADated = f'../../data/AKI_data_Phase1v01_Phase2_' \
-                          f'v01_full_dob_v02_forBN_wo_NA_ri_' \
-                          f'{self._nRows2REad}_ri2_{self._nRowsIn}_ro_{len(resultingDataFrames.dfWoNA)}_{pp.timeStampStr}.csv'
-        fnOut_wNADated = f'../../data/AKI_data_200325_full_dob_v02_forBN_w_NA_ri_' \
-                         f'{self._nRows2REad}_ri2_{self._nRowsIn}_ro_{len(resultingDataFrames.df)}_{pp.timeStampStr}.csv'
-        resultingDataFrames.df.to_csv(fnOut_wNADated, index=False)
-        resultingDataFrames.dfWoNA.to_csv(fnOut_woNADated, index=False)
+    def saveToCSVFile(self, resultingDataFrames, nRows2REad):
+        def saveToCSVFile(self, resultingDataFrames, nRows2REad, inputFileVersionInfo: InputFileVersionInfo,
+                          outputDirPath):
+            fnOut_woNADated = f'{self._processingVersion}_{inputFileVersionInfo.versionString}_ri_' \
+                              f'{nRows2REad}_ro_{len(resultingDataFrames.dfWoNA)}' \
+                              f'_{self._processingVersion}_woNA_D_{pp.timeStampStr}.csv'
+            fnOut_wNADated = f'{self._processingVersion}_{inputFileVersionInfo.versionString}_ri_' \
+                             f'{nRows2REad}_ro_{len(resultingDataFrames.dfWoNA)}' \
+                             f'_{self._processingVersion}_wNA_D_{pp.timeStampStr}.csv'
+            # outputDirPath
+            fnOut_woNADated = outputDirPath / fnOut_woNADated
+            fnOut_wNADated = outputDirPath / fnOut_wNADated
+
+            print(f"Writing output for df without NA to {fnOut_woNADated}")
+            print(f"Writing output for df with NA to {fnOut_wNADated}")
+            df: pd.DataFrame = resultingDataFrames.df
+            df.to_csv(fnOut_wNADated, index=False)
+            resultingDataFrames.dfWoNA.to_csv(fnOut_woNADated, index=False)
+
+    @property
+    def nRows2Read(self):
+        return self._nRows2Read
+
 
     def preprocessAndSave(self, dataFrame):
         res = preprocessData()
         df = res.get("")
         dfWoNA = res.get("")
+
+    # @property
+    # def processingVersion(self):
+    #     return self._processingVersion
 
     def preprocess(self, dataFrame):
         """ transformations applied to raw data """
@@ -63,8 +83,8 @@ class DataPreProcessing4BNv01(DataPreProcessing):
         df1.loc[:, pp.dynamicSCRs] = pp.discretizeSCrVals4MultiCols(df1[pp.dynamicSCRs], pp.scrStates)
         df1WONaN.loc[:, pp.dynamicSCRs] = pp.discretizeSCrVals4MultiCols(df1WONaN[pp.dynamicSCRs], pp.scrStates)
 
-        df1 = pp.discretizeAge(df1, pp.ageStates)
-        df1 = df1[pp.newSelectedColName]
+        df1 = pp.discretizeAge(df1, df1 = df1[pp.newSelectedColName])
+
         df1WONaN = pp.discretizeAge(df1WONaN, pp.ageStates)
         df1WONaN = df1WONaN[pp.newSelectedColName]
         result = ResultingDF(df1, df1WONaN)
@@ -91,13 +111,15 @@ def main():
     dataFileN = params.inputDataSetFile
     preProcessorName = params.preprocessorID
     dataProcessor = None
-    if preProcessorName == 'BNv01':
+    if preProcessorName == "Ph2_BN_V00":
         dataProcessor = DataPreProcessing4BNv01()
-    dataPreprocessingContext = DataPreprocessingContext(dataFileN, nRows2REad, dataProcessor)
-    dataPreprocessingContext.setDataPreProcessor(dataProcessor)
-    results = dataPreprocessingContext.preprocess()
-    dataPreprocessingContext.saveToCSVFile(results)
-    print()
+    if dataProcessor is not None:
+        dataPreprocessingContext = DataPreprocessingContext(dataFileN, nRows2REad, dataProcessor)
+        dataPreprocessingContext.setDataPreProcessor(dataProcessor)
+        results = dataPreprocessingContext.preprocess()
+        dataPreprocessingContext.saveToCSVFile(results)
+
+    print(f"Finished with dataProcessor {'OK' if (dataProcessor is not None) else  'None'}")
 
 
 if __name__ == '__main__':
@@ -108,7 +130,7 @@ if __name__ == '__main__':
     parser.add_argument("--fds", action="store", dest="inputDataSetFile", type=str,
                         default='../../data/AKI_data_200325_full_dob_v02_test.csv',
                         help="file path to file with csv dataset file (default = '../../data/AKI_data_200325_full_dob_v02_test.csv')")
-
+    # Todo: 200704 class version String from Class
     parser.add_argument("--ppId", action="store", dest="preprocessorID", type=str, default='BNv01',
                         help="Preprocessor ID: BNv01 = for BN with excluding record if AKI present previosly in past 4 weeks")
 

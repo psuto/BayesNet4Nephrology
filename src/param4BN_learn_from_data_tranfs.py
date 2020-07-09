@@ -401,9 +401,11 @@ def akiPresent(row, df):
 
 def addAKICol(df1, baselineKDIGOmol):
     """
+    Front Only labeling
     :param df1: dataframe
     :param baselineKDIGOmol: baseline values for SCr
     """
+    # ToDo Add Forward and Back2ward approach for AKI48H labeling
     df1.loc[:, 'AKI_present'] = pd.Series(dtype=bool)
     df1.loc[:, 'AKI_stage_1'] = pd.Series(dtype=bool)
     df1.loc[:, 'AKI_stage_2'] = pd.Series(dtype=bool)

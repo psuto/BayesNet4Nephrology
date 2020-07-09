@@ -7,7 +7,7 @@
       <sourceFolder url="file://$MODULE_DIR$/src/sandbox" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/test" isTestSource="false" />
     </content>
-    <orderEntry type="jdk" jdkName="Python 3.7 (dECMT)" jdkType="Python SDK" />
+    <orderEntry type="jdk" jdkName="Python 3.7 (GPyTorch_)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
   <component name="PackageRequirementsSettings">
