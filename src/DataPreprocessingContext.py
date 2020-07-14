@@ -52,6 +52,7 @@ class DataPreprocessingContext():
                                                     strNameMatches["seriesStr"], strNameMatches["seriesNumber"],
                                                     strNameMatches["annotation"])
         self._inputFileVersionInfo = inputFileVersionInfo
+
     @property
     def outputDirPath(self):
         return self._outputDirPath
